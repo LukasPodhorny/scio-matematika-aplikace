@@ -1,24 +1,22 @@
 # Rovnice a nerovnice
 
-Rovnice je rovnost, ve které vystupuje neznámá; řešit ji znamená najít všechna čísla, po jejichž dosazení se z rovnosti stane pravdivý výrok. Nerovnice se řeší podobně, jen výsledkem bývá interval. Ve SCIO se u rovnic nejtěžší body skrývají v úpravách, které mění množinu řešení (umocnění, násobení výrazem s neznámou), v podmínkách (jmenovatel, odmocnina, logaritmus) a v parametrech.
+Rovnice je rovnost, ve které vystupuje neznámá; řešit ji znamená najít všechna čísla, po jejichž dosazení se z rovnosti stane pravdivý výrok. Nerovnice se řeší podobně, jen výsledkem bývá interval. Pozornost věnuj zejména úpravám, které mohou změnit množinu řešení, podmínkám u jmenovatelů, odmocnin a logaritmů a rovnicím s parametrem.
 
 ## Co znamená řešit rovnici
 
 Každá úprava rovnice buď množinu řešení zachovává (ekvivalentní úprava), nebo ji mění. Cílem je dojít k tvaru, ze kterého řešení přímo přečteš, a cestou nic neztratit ani nepřidat.
 
-> [!VETA] Ekvivalentní úpravy (množinu řešení nemění):
+> [!VETA] Ekvivalentní úpravy zachovávají množinu řešení na původním definičním oboru:
 >
-> - přičtení a odečtení téhož čísla i výrazu k oběma stranám,
-> - vynásobení a vydělení obou stran týmž nenulovým číslem,
+> - přičtení či odečtení stejného výrazu definovaného na tomto oboru,
+> - násobení či dělení stejným výrazem, který na tomto oboru není nulový,
 > - záměna levé a pravé strany.
 >
-> Neekvivalentní úpravy (množinu řešení mění):
->
-> - umocnění obou stran (přidává falešné kořeny),
-> - vynásobení obou stran nulou,
-> - vynásobení nebo vydělení výrazem s neznámou bez rozboru jeho znaménka a nulových bodů.
+> U rovnic znaménko násobitele nehraje roli. Jeho nenulovost ano: dělením výrazem $x$ můžeš ztratit řešení $x = 0$. Násobení nulou naopak z každé definované rovnice udělá rovnost $0 = 0$, a zruší tak původní omezení.
 
-> [!POZOR] Umocnění není ekvivalentní úprava. Z rovnice $a = b$ plyne $a^2 = b^2$, ale obráceně platí $a^2 = b^2$ i pro $a = -b$. Po každém umocnění proto musí následovat zkouška dosazením do původní rovnice.
+> [!POZOR] Druhá mocnina může přidat falešné kořeny: z $a=b$ plyne $a^2=b^2$, obráceně ale připadá v úvahu i $a=-b$. Jsou-li obě strany nezáporné, je umocnění na druhou ekvivalentní. Třetí mocnina je ekvivalentní pro všechna reálná čísla. Kandidáty po umocnění kontroluj v původní rovnici.
+
+Odmocnit obě strany druhou odmocninou lze, jsou-li nezáporné. Logaritmovat obě strany lze, jsou-li kladné, se stejným platným základem. Tyto podmínky vždy ověř před úpravou.
 
 Zkouška a podmínky jsou dvě strany téže mince: podmínky dopředu zužují kandidáty (např. $x \ge 0$), zkouška zpětně ověřuje ty, kteří prošli. U těžších rovnic používej obojí.
 
@@ -32,15 +30,38 @@ $$
 
 pro $a$ ≠ $0$.
 
-Zvláštní případy po zjednodušení: tvar $0x = 5$ nemá řešení, tvar $0x = 0$ má nekonečně mnoho řešení (vyhoví každé reálné číslo).
+Zvláštní případy po zjednodušení: tvar $0x = 5$ nemá řešení, tvar $0x = 0$ nepřidává žádné omezení: vyhoví každé číslo z původního definičního oboru. U běžné lineární rovnice je to celé $\mathbb{R}$.
 
-> [!POZOR] Minus před zlomkem patří celé čitatelce: $-2(2x+1)$ je $-4x-2$, ne $-4x+2$. Druhá klasická chyba je zapomenout vynásobit jmenovatelem i osamocená čísla bez zlomku.
+> [!POZOR] Záporným číslem násobíš každý člen závorky: $-2(2x+1)$ je $-4x-2$, ne $-4x+2$. Druhá klasická chyba je zapomenout vynásobit jmenovatelem i osamocená čísla bez zlomku.
+
+### Rovnice se zlomky a podmínky
+
+Jmenovatele původní rovnice nesmějí být nulové. Teprve na takto omezeném oboru smíš násobit společným jmenovatelem. Po výpočtu porovnej kandidáty s původními zákazy, i když se zlomek cestou zkrátil.
+
+Například:
+
+$$
+\frac{x+1}{x-2}=\frac{3}{x-2}.
+$$
+
+Podmínkou je $x$ ≠ $2$. Po vynásobení dostaneš $x+1=3$, tedy $x=2$. Tato hodnota je zakázaná, takže původní rovnice nemá řešení. Naopak rovnost $(x^2-4)/(x-2)=x+2$ platí pro každé reálné $x$ kromě 2.
+
+### Jak sestavit rovnici ze slovní úlohy
+
+Neznámou nejprve pojmenuj i s jednotkou. Každý údaj přelož na výraz a rovnítkem spoj dvě vyjádření téže veličiny. Například „první cena je o 200 Kč nižší“ znamená, že k první ceně přičteš 200 a dostaneš druhou cenu.
+
+- Sleva $p$ procent z ceny $c$ dává $c(1-p/100)$. Následná pevná sleva se odečítá až z této ceny.
+- Doba pohybu je $t=s/v$. K ní přičti zastávky: při $n$ zastávkách po $h$ hodinách je celkem $s/v+nh$ hodin.
+- Počty lidí či zastávek bývají celá nezáporná čísla. Algebraické řešení navíc musí splňovat tyto podmínky.
+- Opačné číslo k $x$ je $-x$; převrácené číslo je $1/x$ a existuje pouze pro $x$ ≠ $0$.
+
+Rovnice může odhalit i rozpor v zadání. Jsou-li dvě skupiny stejně početné a první se zdvojnásobí, tvoří druhá třetinu nového celku bez ohledu na původní počet. Jiný požadovaný podíl by s těmito údaji nebyl slučitelný.
 
 ## Soustavy lineárních rovnic
 
 Dvě rovnice o dvou neznámých řeš sčítací metodou (rovnice vynásob tak, aby po sečtení jedna neznámá vypadla), nebo dosazovací metodou (z jedné rovnice vyjádři neznámou a dosaď do druhé). Obě metody vedou k cíli; sčítací bývá rychlejší, když se koeficienty hezky doplňují.
 
-Počet řešení poznáš z průběhu výpočtu: vyjde-li $0 = 5$, soustava nemá řešení; vyjde-li $0 = 0$, má jich nekonečně mnoho. Geometricky jde o dvě přímky: různoběžky (jedno řešení), rovnoběžky (žádné), totožné přímky (nekonečně mnoho).
+Počet řešení poznáš z průběhu výpočtu: vyjde-li $0 = 5$, soustava nemá řešení; jestliže se jedna rovnice změní na $0 = 0$ a druhá popisuje přímku, má soustava nekonečně mnoho řešení na této přímce. Samotná rovnost $0 = 0$ neznamená, že lze zbylou rovnici zahodit. Geometricky jde o dvě přímky: různoběžky (jedno řešení), rovnoběžky (žádné), totožné přímky (nekonečně mnoho).
 
 > [!VETA] Po dosazení vždy ověř nalezenou dvojici v obou původních rovnicích. Jediná chyba ve znaménku dá dvojici, která vypadá věrohodně, ale nevyhovuje ani jedné rovnici.
 
@@ -78,6 +99,16 @@ Zvláštní tvary řeš bez vzorce: pro $b = 0$ je $x^2 = -c/a$ (řešení exist
 
 > [!POZOR] U bikvadratické rovnice se záporné hodnoty $t$ zahazují ($x^2$ je vždy nezáporné), ale z každého kladného $t$ vzniknou dva kořeny $x = \pm\sqrt{t}$. Nejčastější chyba je zapomenout jednu z těchto dvou stran.
 
+### Počet různých kořenů a užitečné zkratky
+
+Součin je nulový, právě když je alespoň jeden činitel nulový. Například $x^3(x^2-5)=0$ má tři různé reálné kořeny: $0$, $\sqrt5$ a $-\sqrt5$. Trojnásobný kořen 0 počítáme mezi různými kořeny jen jednou. Dělením výrazem $x^3$ by se ztratil.
+
+Ne vždy potřebuješ dopočítat samotné $x$. Pokud znáš součet $x+1/x=s$, můžeš pro $x$ ≠ $0$ rovnou použít:
+
+$$
+x^2+\frac1{x^2}=\left(x+\frac1x\right)^2-2=s^2-2.
+$$
+
 ## Vietovy vzorce
 
 > [!VETA] Pro kořeny $x_1$ a $x_2$ rovnice $ax^2+bx+c = 0$ platí:
@@ -90,7 +121,7 @@ Zvláštní tvary řeš bez vzorce: pro $b = 0$ je $x^2 = -c/a$ (řešení exist
 
 Vieta slouží ke třem věcem: rychlé hledání kořenů zpaměti (uhádni dvojici se správným součtem a součinem), podmínky na znaménka kořenů (oba kladné: součet i součin kladný; opačná znaménka: součin záporný) a rozklad na součin $a(x-x_1)(x-x_2)$.
 
-> [!POZOR] Vietovy vzorce samy o sobě nezaručují, že kořeny existují. Podmínka „součet kladný a součin kladný" ještě neznamená dva kladné kořeny — vždy musíš přidat $D > 0$ (u parametrů) nebo $D \ge 0$.
+> [!POZOR] Vietovy vzorce samy o sobě nezaručují, že kořeny existují. Podmínka „součet kladný a součin kladný" ještě neznamená dva kladné kořeny — pro dva různé reálné kořeny přidej $D > 0$; připouštíš-li i dvojnásobný kořen, stačí $D \ge 0$. To platí i u rovnic s parametrem.
 
 ## Rovnice s parametrem
 
@@ -113,13 +144,17 @@ Rovnice s neznámou pod odmocninou. Postup:
 3. Umocni obě strany a vzniklou rovnici vyřeš.
 4. Každého kandidáta ověř zkouškou v původní rovnici.
 
-> [!VETA] Odmocnina je vždy nezáporná: rovnice $\sqrt{A} = B$ může mít řešení jen pro $B \ge 0$ a $A \ge 0$. Někdy tyto dvě podmínky samy o sobě pustí jediného kandidáta a umocnění pak slouží jen jako kontrola.
+> [!VETA] Druhá odmocnina je vždy nezáporná: rovnice $\sqrt{A} = B$ může mít řešení jen pro $B \ge 0$ a $A \ge 0$. Někdy tyto dvě podmínky samy o sobě pustí jediného kandidáta a umocnění pak slouží jen jako kontrola.
 
-> [!POZOR] Zkouška je u iracionálních rovnic povinná, ne dobrovolná. Falešné kořeny z umocnění vypadají stejně nevinně jako správné — poznáš je jen dosazením.
+> [!POZOR] Umocněnou rovnici řešíš spolu s podmínkami původní rovnice. Falešný kořen můžeš vyřadit už podle znaménka pravé strany. Zkouška dosazením je spolehlivá závěrečná kontrola, zvlášť při opakovaném umocňování.
+
+### Substituce s odmocninou
+
+Pro rovnici $x+\sqrt{x}-6=0$ polož $t=\sqrt{x}$, tedy $t\ge0$ a $x=t^2$. Dostaneš $t^2+t-6=0$ s kořeny 2 a −3. Zápornou hodnotu vyřaď; z $t=2$ vychází $x=4$. Zkouška: $4+2-6=0$.
 
 ## Exponenciální rovnice
 
-Neznámá je v exponentu. Tři nástroje podle tvaru rovnice:
+Neznámá je v exponentu. Nástroje podle tvaru rovnice:
 
 1. Stejný základ: $a^x = a^y$ (pro $a > 0$, $a$ ≠ $1$) platí právě když $x = y$. Obě strany nejdřív přepiš na stejný základ.
 2. Vytýkání: $2^{x+1}$ je $2\cdot 2^x$, takže součet $2^{x+1}+2^x$ je $3\cdot 2^x$. Rozepiš mocniny se součtem v exponentu a společnou mocninu vytkni.
@@ -129,7 +164,36 @@ Neznámá je v exponentu. Tři nástroje podle tvaru rovnice:
 
 > [!POZOR] Sčítat exponenty smíš jen při násobení mocnin ($2^x\cdot 2 = 2^{x+1}$). Součet $2^{x+1}+2^x$ se nekrátí na $2^{2x+1}$ — vytkni $2^x$ a dostaneš $3\cdot 2^x$.
 
+### Když základy nelze snadno sjednotit
+
+Obě strany kladné rovnice lze zlogaritmovat. Například:
+
+$$
+3^x=5^{x-1}\quad\Rightarrow\quad x\ln 3=(x-1)\ln 5
+$$
+
+Po seskupení členů s neznámou:
+
+$$
+x=\frac{\ln 5}{\ln 5-\ln 3}.
+$$
+
 ## Logaritmické rovnice
+
+Logaritmus odpovídá na otázku „na jaký exponent umocnit základ, abych dostal dané číslo“:
+
+$$
+\log_a x=y\quad\Longleftrightarrow\quad a^y=x.
+$$
+
+Platí $a>0$, $a$ ≠ $1$ a $x>0$. Například $\log_4 64=3$, protože $4^3=64$. V tomto výkladu značí $\log x$ dekadický logaritmus se základem 10 a $\ln x$ přirozený logaritmus se základem $e$.
+
+Změna základu (také $b>0$, $b$ ≠ $1$):
+
+$$
+\log_a x=\frac{\log_b x}{\log_b a}.
+$$
+
 
 > [!VETA] Pravidla logaritmů (základ $a > 0$, $a$ ≠ $1$; argumenty kladné):
 >
@@ -153,7 +217,7 @@ Podrobný výklad je v jednotce Goniometrie; zde jen to, co potřebuješ jako ř
 - $\cos x = a$: dvě větve ($x = \pm\alpha+2k\pi$),
 - $\tan x = a$: jediná rodina s periodou $\pi$ ($x = \alpha+k\pi$).
 
-Složitější rovnice převáděj na tyto základní: substitucí ($t = \sin x$, pak zahodit $t$ mimo $\langle -1, 1\rangle$), vytýkáním místo dělení (nikdy neděl výrazem s neznámou), a kondenzací součtu $a\sin x+b\cos x$ na jedinou funkci:
+Složitější rovnice převáděj na tyto základní: substitucí ($t = \sin x$, pak zahodit $t$ mimo $\langle -1, 1\rangle$), vytýkáním místo dělení (před dělením výrazem s neznámou vyšetři jeho nulové body), a kondenzací součtu $a\sin x+b\cos x$ na jedinou funkci:
 
 $$
 a\sin x + b\cos x = \sqrt{a^2+b^2}\sin(x+\varphi)
@@ -169,17 +233,100 @@ Lineární nerovnice se řeší stejnými úpravami jako rovnice s jedním rozd�
 
 > [!VETA] Násobení a dělení obou stran nerovnice záporným číslem otáčí znaménko nerovnosti. Násobení a dělení kladným číslem ho nechává.
 
-Kvadratické nerovnice řeš přes nulové body a tvar paraboly: parabola otevřená nahoru je záporná mezi kořeny a kladná vně (u paraboly otevřené dolů naopak). Ostrá nerovnost ($<$, $>$) znamená otevřené kraje, neostrá ($\le$, $\ge$) uzavřené.
+Má-li kvadratický trojčlen dva různé reálné kořeny, řeš nerovnici přes nulové body a tvar paraboly: parabola otevřená nahoru je záporná mezi kořeny a kladná vně (u paraboly otevřené dolů naopak). U ostré nerovnosti ($<$, $>$) nulové body nepatří do řešení; u neostré ($\le$, $\ge$) patří, pokud jsou v definičním oboru. Nekonečno nikdy není uzavřený kraj.
 
 Podílové a součinové nerovnice řeš znaménkovou tabulkou: najdi nulové body čitatele i jmenovatele, rozděl osu na intervaly a v každém urči znaménko. Nulové body jmenovatele nepatří do řešení nikdy, ani u neostré nerovnosti.
 
-U exponenciálních a logaritmických nerovnic rozhoduje monotonie základu: pro $a > 1$ se směr nerovnosti zachovává, pro $a < 1$ se otáčí:
+U exponenciálních a logaritmických nerovnic rozhoduje monotonie základu: pro $a > 1$ se směr nerovnosti zachovává, pro $0 < a < 1$ se otáčí:
 
 $$
 2^x < 8 \;\Rightarrow\; x < 3 \qquad \left(\frac{1}{2}\right)^x < 8 \;\Rightarrow\; x > -3
 $$
 
 > [!POZOR] Nerovnici nikdy nenásob jmenovatelem, jehož znaménko neznáš. Zlomek $(x-1)/(x+3)$ se proti nule neporovnává „vynásobením závorkou", ale znaménkovou tabulkou — a bod $x = -3$ nepatří do řešení, i když je nerovnice neostrá.
+
+### Dvojnásobný kořen a žádný reálný kořen
+
+Je-li $D=0$, trojčlen má tvar $a(x-r)^2$. Mimo $r$ má znaménko koeficientu $a$; přes dvojnásobný kořen se znaménko nemění. Pro $a>0$:
+
+| Nerovnice | Řešení |
+|---|---|
+| $a(x-r)^2>0$ | všechna reálná čísla kromě $r$ |
+| $a(x-r)^2\ge0$ | všechna reálná čísla |
+| $a(x-r)^2<0$ | prázdná množina |
+| $a(x-r)^2\le0$ | pouze $r$ |
+
+Pro $a<0$ se kladné a záporné hodnoty prohodí. Je-li $D<0$, nemá trojčlen žádný nulový bod a má všude znaménko $a$. Například $-x^2-4<0$ platí pro všechna reálná čísla, zatímco $-x^2-4\ge0$ nemá řešení.
+
+### Součin, podíl a znaménka
+
+Nejprve převeď vše na jednu stranu, aby na druhé byla nula. Pak hledej body, kde se některý činitel nuluje nebo výraz není definovaný. V každém vzniklém intervalu stačí zjistit znaménka činitelů. Stejná znaménka dávají kladný součin i podíl, opačná záporný.
+
+U nerovnice $(x+4)(x-2)>0$ vyhovují vnější intervaly: $x<-4$ nebo $x>2$. U podílu $(x+4)/(x-2)\le0$ vyhovuje:
+
+$$
+x\in\langle-4;2).
+$$
+
+Bod −4 přidáme kvůli rovnosti; bod 2 je zakázaný. U činitele se sudou násobností se znaménko nemusí změnit — nepřepínej automaticky plus a minus po každém nulovém bodu.
+
+Ani násobení neznámou není samo o sobě chybné, musíš ale znát její znaménko. V nerovnici $6/x>2$ je $x$ ≠ $0$. Pro $x>0$ dostaneš $x<3$, dohromady $0<x<3$. Pro $x<0$ se znaménko obrátí: $6<2x$, což se záporným $x$ není slučitelné. Výsledkem je $(0;3)$.
+
+Umocnění nerovnice na druhou zachovává směr při nezáporných stranách. Bez této podmínky může výsledek změnit: z $-3<2$ nelze odvodit $9<4$.
+
+### Soustavy nerovnic
+
+V soustavě musejí všechny nerovnice platit současně. Vyřeš každou zvlášť a udělej **průnik** výsledků. Například $2x+1>5$ dává $x>2$ a $3x-2\le13$ dává $x\le5$. Společně:
+
+$$
+x\in(2;5\rangle.
+$$
+
+Pokud podmínky znějí například $x>4$ a zároveň $x\le1$, průnik je prázdný. U počtu celočíselných řešení až nakonec vyber celá čísla; nezaměňuj celá a kladná celá čísla a kontroluj oba kraje.
+
+## Rovnice a nerovnice s absolutní hodnotou
+
+Absolutní hodnota je vzdálenost od nuly: $|x|=x$ pro $x\ge0$ a $|x|=-x$ pro $x<0$. Obecně $|x-a|$ měří vzdálenost čísel $x$ a $a$.
+
+### Jeden výraz v absolutní hodnotě
+
+Pro $c>0$ platí:
+
+| Vztah | Ekvivalentní podmínky |
+|---|---|
+| $\lvert u\rvert=c$ | $u=c$ nebo $u=-c$ |
+| $\lvert u\rvert<c$ | $-c<u<c$ |
+| $\lvert u\rvert\le c$ | $-c\le u\le c$ |
+| $\lvert u\rvert>c$ | $u<-c$ nebo $u>c$ |
+| $\lvert u\rvert\ge c$ | $u\le-c$ nebo $u\ge c$ |
+
+Je-li $c=0$, rovnost či nerovnost $|u|\le0$ vyžaduje $u=0$, zatímco $|u|<0$ nemá řešení. Je-li $c<0$, nemá řešení ani $|u|=c$, ani $|u|\le c$; naopak $|u|>c$ platí pro každé definované $u$.
+
+Například $|2x-3|=7$ dává $2x-3=7$ nebo $2x-3=-7$, tedy $x=5$ nebo $x=-2$. Nerovnice $|x-2|<3$ popisuje body vzdálené od 2 méně než 3, tedy $x\in(-1;5)$.
+
+### Více absolutních hodnot
+
+Najdi nulové body výrazů uvnitř absolutních hodnot. Rozděl jimi celou osu, v každém intervalu nahraď absolutní hodnoty správně podepsanými výrazy a vyřeš rovnici či nerovnici. Výsledek každé větve omez na interval, ve kterém jsi počítal. Nakonec větve **sjednoť**.
+
+Příklad:
+
+$$
+|x-1|+|x-5|\le8.
+$$
+
+- Pro $x<1$: $(1-x)+(5-x)\le8$, tedy $x\ge-1$. V této větvi vyhovuje $\langle-1;1)$.
+- Pro $1\le x\le5$: $(x-1)+(5-x)=4$, takže vyhovuje celý interval $\langle1;5\rangle$.
+- Pro $x>5$: $(x-1)+(x-5)\le8$, tedy $x\le7$. V této větvi vyhovuje $(5;7\rangle$.
+
+Sjednocením dostaneme $\langle-1;7\rangle$. Geometricky jde o součet vzdáleností od bodů 1 a 5; mezi těmito body je stále roven 4.
+
+> [!POZOR] Ve větvi $x<a$ je $|x-a|=-(x-a)=a-x$. Minus patří celé závorce. U soustavy absolutních nerovnic nakonec bereš průnik řešení jednotlivých nerovnic, nikoli jejich sjednocení.
+
+### Absolutní hodnota ve jmenovateli a v soustavě
+
+Pro $x$ ≠ $0$ je $|12/x|=12/|x|$. Nerovnost $|12/x|>4$ tedy znamená $0<|x|<3$: nula zůstává zakázaná, přestože by prosté $|x|<3$ splňovala.
+
+V soustavě s absolutními hodnotami můžeš nejprve vyjádřit celý výraz, například $|x-a|$, a dosadit jej do druhé rovnice. Teprve potom rozlišuj znaménka. Ptá-li se úloha na počet dvojic $(x,y)$, jedna hodnota $y$ může připouštět dvě hodnoty $x$.
 
 ## Typové úlohy SCIO k rovnicím
 
@@ -188,7 +335,7 @@ $$
 - **Vieta naruby.** Podmínka o kořenech (poměr, rozdíl, jeden větší o 1) místo přímého řešení. Nástroj: označit kořeny a použít jejich součet a součin.
 - **Parametr se změnou typu.** Hodnota parametru, která z kvadratické rovnice udělá lineární. Nástroj: zlomové hodnoty vyšetřit vždy zvlášť.
 - **Umocnění a falešné kořeny.** Iracionální rovnice, kde umocněná rovnice dá kořen navíc. Nástroj: podmínky + povinná zkouška.
-- **Substituce s návratem.** Exponenciální, logaritmické a bikvadratické rovnice, kde se $t$ musí převést zpět na $x$. Nástroj: každé $t$ zvlášť, záporná a nulová zahodit.
+- **Substituce s návratem.** Exponenciální, logaritmické a bikvadratické rovnice, kde se $t$ musí převést zpět na $x$. Nástroj: každé $t$ zvlášť a jeho vlastní podmínka: pro $t=x^2$ či $t=\sqrt{x}$ je $t\ge0$, pro $t=a^x$ je $t>0$, ale $t=\log_a x$ smí být libovolné reálné číslo.
 - **Podmínky z původního tvaru.** Logaritmy, odmocniny a zlomky, kde upravený tvar vypadá nevinně, ale původní má užší definiční obor. Nástroj: podmínky psát vždy před úpravami.
 - **Znaménkové pasti u nerovnic.** Otáčení u záporného dělitele a u základu menšího než 1, otevřené vs. uzavřené kraje, body mimo definiční obor. Nástroj: znaménková tabulka + kontrola krajů.
 
@@ -260,7 +407,7 @@ $$
 
 ### Příklad 5
 
-**Zadání:** Pro která $k$ má rovnice $x^2-kx+4 = 0$ oba kořeny záporné?
+**Zadání:** Pro která $k$ má rovnice $x^2-kx+4 = 0$ dva různé záporné kořeny?
 
 **Řešení:**
 
@@ -274,7 +421,7 @@ $$
 
 **Řešení:**
 
-1. Nulový bod čitatele $x = -2$; jmenovatel nesmí být nula: $x$ ≠ $1$. (Násobení závorkou $(x-1)$ je zakázané — její znaménko neznáme.)
+1. Nulový bod čitatele $x = -2$; jmenovatel nesmí být nula: $x$ ≠ $1$. (Násobení závorkou $(x-1)$ by vyžadovalo rozdělení na případy podle jejího znaménka.)
 2. Znaménka po intervalech: pro $x < -2$ je zlomek kladný, pro $-2 < x < 1$ záporný, pro $x > 1$ kladný.
 3. Vyhoví záporný interval; bod $x = -2$ patří (neostrá nerovnost), bod $x = 1$ nikdy:
 
@@ -293,7 +440,7 @@ $$
 - $\log_a(x/y) = \log_a x-\log_a y$
 - $\sqrt{A} = B$ vyžaduje $A \ge 0$ a $B \ge 0$.
 - Substituce: $t = x^2$ ($t \ge 0$), $t = a^x$ ($t > 0$), $t = \log_a x$.
-- Nerovnice: dělení záporným číslem otáčí; základ $a < 1$ otáčí u mocnin i logaritmů.
+- Nerovnice: dělení záporným číslem otáčí; základ $0 < a < 1$ otáčí u mocnin i logaritmů.
 - $\sin A = \sin B$: $A = B+2k\pi$ nebo $A = \pi-B+2k\pi$.
 - Kvadratický vzorec v display podobě:
 

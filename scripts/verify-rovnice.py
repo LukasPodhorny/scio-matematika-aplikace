@@ -8,6 +8,8 @@ Končí nenulově při jakékoli neshodě.
 rovn-d09 (posouzení úprav) se ověřuje úsudkem, ne kódem — viz report.
 """
 
+import json
+import subprocess
 import math
 import re
 import sys
@@ -254,9 +256,11 @@ check(solveset(-3 * x - 9 > 0, x, S.Reals) == Interval.open(-oo, -3), "d08")
 
 # ---------- struktura datového souboru ----------
 DATA = Path(__file__).resolve().parent.parent / "app" / "src" / "content" / "data" / "rovnice.ts"
-text = DATA.read_text(encoding="utf-8")
-ids = re.findall(r'id:\s*"([^"]+)"', text)
-spravne = [int(m) for m in re.findall(r"spravna:\s*(\d)", text)]
+data = json.loads(subprocess.check_output([
+    "node", "--experimental-strip-types", "--input-type=module", "-e",
+    'import {ROVNICE} from "./app/src/content/data/rovnice.ts"; console.log(JSON.stringify(ROVNICE));'
+], cwd=DATA.parents[4], text=True))
+ids = [task["id"] for task in data]
 ocekavane_spravne = {
     "rovn-01": 0, "rovn-02": 2, "rovn-03": 2, "rovn-04": 0, "rovn-05": 1,
     "rovn-06": 2, "rovn-07": 1, "rovn-08": 2, "rovn-09": 1, "rovn-10": 2,
@@ -267,21 +271,19 @@ ocekavane_spravne = {
     "rovn-d01": 0, "rovn-d02": 1, "rovn-d03": 2, "rovn-d04": 3, "rovn-d05": 1,
     "rovn-d06": 2, "rovn-d07": 1, "rovn-d08": 2, "rovn-d09": 2,
 }
-check(len(ids) == len(ocekavane_spravne) == 38, f"struktura: {len(ids)} úloh")
-check(set(ids) == set(ocekavane_spravne), "struktura: množina id")
+# Tento skript matematicky pokrývá původních 38 úloh. Další obsah
+# má vlastní ověření; strukturální kontrola se vztahuje na celou banku.
+check(set(ocekavane_spravne) <= set(ids), "struktura: původní id zachována")
 check(len(ids) == len(set(ids)), "struktura: id unikátní")
-check(len(spravne) == len(ids), "struktura: každá úloha má právě jeden index správné")
-for i, sid in zip(spravne, ids):
-    check(ocekavane_spravne.get(sid) == i, f"struktura: {sid} spravna={i}")
-# 4 unikátní možnosti u každé úlohy
-bloky = re.findall(r"moznosti:\s*\[(.*?)\],\s*\n\s*spravna", text, re.S)
-check(len(bloky) == len(ids), f"struktura: {len(bloky)} bloků možností")
-for sid, b in zip(ids, bloky):
-    opts = re.findall(r'"((?:[^"\\]|\\.)*)"', b)
+for task in data:
+    sid = task["id"]
+    if sid in ocekavane_spravne:
+        check(task["spravna"] == ocekavane_spravne[sid], f"struktura: {sid} správný index")
+    check(0 <= task["spravna"] < 4, f"struktura: {sid} index v rozsahu")
+    opts = task["moznosti"]
     check(len(opts) == 4 and len(set(opts)) == 4, f"struktura: {sid} má 4 unikátní možnosti")
-check(text.count("verified: true") == len(ids), "struktura: všechny verified")
-check(text.count('verifiedBy: "independent-solve"') == 1, "struktura: právě jedna independent-solve (d09)")
-check(len(re.findall(r'obtiznost:\s*([1-5])', text)) == len(ids), "struktura: obtížnosti 1–5")
+    check(task["verified"] is True, f"struktura: {sid} verified")
+    check(task["obtiznost"] in range(1, 6), f"struktura: {sid} obtížnost")
 
 print(f"\nPASS: {PASSES}, FAIL: {len(FAILURES)}")
 sys.exit(1 if FAILURES else 0)

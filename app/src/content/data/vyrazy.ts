@@ -314,7 +314,7 @@ export const VYRAZY: Task[] = [
     obtiznost: 2,
     druh: "scio",
     zadani:
-      "\\text{Určete, pro která reálná } x \\text{ není definován výraz } \\frac{x+1}{(x-2)(x+3)}\\text{.}",
+      "\\text{Určete, pro která reálná } x \\text{ je definován výraz } \\frac{x+1}{(x-2)(x+3)}\\text{.}",
     moznosti: [
       "x \\ne -1",
       "x \\ne 2 \\text{ a } x \\ne -3",
@@ -407,6 +407,7 @@ export const VYRAZY: Task[] = [
     ],
     spravna: 3,
     postup: [
+      "\\text{Podmínky původního výrazu: }x\\ne0\\text{ a }x\\ne-1.",
       "1 + \\frac{1}{x} = \\frac{x + 1}{x} \\Rightarrow \\frac{1}{1 + \\frac{1}{x}} = \\frac{x}{x + 1}",
       "1 + \\frac{x}{x + 1} = \\frac{x + 1 + x}{x + 1}",
       "= \\boxed{\\frac{2x + 1}{x + 1}}",
@@ -734,7 +735,7 @@ export const VYRAZY: Task[] = [
     podtemaNazev: "Úpravy výrazů",
     obtiznost: 1,
     druh: "dril",
-    zadani: "\\text{Vytkněte před závorku: } 4x^2 + 6x\\text{.}",
+    zadani: "\\text{Vytkněte největší společný jednočlen s kladným koeficientem: } 4x^2 + 6x\\text{.}",
     moznosti: ["2(2x^2 + 3x)", "x(4x + 6)", "2x(2x + 3)", "2x(2x + 6)"],
     spravna: 2,
     postup: [
@@ -1309,6 +1310,7 @@ export const VYRAZY: Task[] = [
     ],
     spravna: 0,
     postup: [
+      "\\text{Podmínky původního výrazu: }x\\ne0\\text{ a }x\\ne1.",
       "1 - \\frac{1}{x} = \\frac{x - 1}{x}",
       "\\frac{x}{\\frac{x - 1}{x}} = x\\cdot\\frac{x}{x - 1} = \\frac{x^2}{x - 1}",
       "\\Rightarrow \\boxed{\\frac{x^2}{x - 1}}",
@@ -1337,6 +1339,7 @@ export const VYRAZY: Task[] = [
     ],
     spravna: 3,
     postup: [
+      "\\text{Podmínky: }x\\ne-2,\\ x\\ne2\\text{ ze jmenovatelů; }x\\ne3\\text{ z nenulového dělitele.}",
       "\\frac{(x - 2)(x - 3)}{(x - 2)(x + 2)}\\cdot\\frac{x - 2}{x - 3}",
       "\\text{Po vykrácení } (x - 3) \\text{ a jednoho } (x - 2) \\text{ zbude } \\frac{x - 2}{x + 2}",
       "\\Rightarrow \\boxed{\\frac{x - 2}{x + 2}}",
@@ -1739,6 +1742,7 @@ export const VYRAZY: Task[] = [
     moznosti: ["x^{11}", "x^{4{,}5}", "x^7", "x^{18}"],
     spravna: 2,
     postup: [
+      "\\text{Podmínka dělení: }x\\ne0\\text{, platí i po zjednodušení.}",
       "x^9 : x^2 = x^{9-2}",
       "= \\boxed{x^7}",
     ],
@@ -1807,5 +1811,210 @@ export const VYRAZY: Task[] = [
     verified: true,
     verifiedBy: "code",
     zdroj: "handwritten",
+  },
+  {
+    id: "vyraz-57",
+    okruh: "vyrazy",
+    tema: "vyrazy",
+    podtema: "vyr-upravy",
+    podtemaNazev: "Úpravy výrazů",
+    obtiznost: 3,
+    druh: "scio",
+    zadani: "\\text{Nele je nyní }t\\text{ let, }t>3\\text{. Za pět let bude mít její teta trojnásobek Nelina tehdejšího věku. Před třemi lety měl dědeček pětinásobek Nelina tehdejšího věku. Jaký je součet jejich tří současných věků?}",
+    moznosti: [
+      "9t+2",
+      "9t-2",
+      "9t",
+      "9t+10"
+    ],
+    spravna: 1,
+    postup: [
+      "\\text{Teta za pět let: }3(t+5)\\text{, dnes: }3(t+5)-5=3t+10.",
+      "\\text{Dědeček před třemi lety: }5(t-3)\\text{, dnes: }5(t-3)+3=5t-12.",
+      "t+(3t+10)+(5t-12)=\\boxed{9t-2}."
+    ],
+    typickaChyba: "Porovnávat dnešní věk s budoucím či minulým. Nejdřív sestav vztah v uvedené době a pak vrať věk každé osoby do současnosti.",
+    verified: true,
+    verifiedBy: "code",
+    zdroj: "handwritten"
+  },
+  {
+    id: "vyraz-58",
+    okruh: "vyrazy",
+    tema: "vyrazy",
+    podtema: "vyr-mnohocleny",
+    podtemaNazev: "Mnohočleny a vzorce",
+    obtiznost: 3,
+    druh: "scio",
+    zadani: "\\text{Pro všechna reálná }x\\text{ platí }3x^2-5x+c=(x+2)(ax+b)\\text{. Určete }2a-b+c\\text{.}",
+    moznosti: [
+      "-30",
+      "-5",
+      "17",
+      "-27"
+    ],
+    spravna: 1,
+    postup: [
+      "(x+2)(ax+b)=ax^2+(2a+b)x+2b.",
+      "a=3,\\quad2a+b=-5\\Rightarrow b=-11,\\quad c=2b=-22.",
+      "2a-b+c=6+11-22=\\boxed{-5}."
+    ],
+    typickaChyba: "Hledat jedno x, pro které se strany rovnají. Rovnost platí pro všechna x, takže se musí shodovat koeficienty všech mocnin včetně konstanty.",
+    verified: true,
+    verifiedBy: "code",
+    zdroj: "handwritten"
+  },
+  {
+    id: "vyraz-59",
+    okruh: "vyrazy",
+    tema: "vyrazy",
+    podtema: "vyr-mocniny",
+    podtemaNazev: "Mocniny a odmocniny",
+    obtiznost: 3,
+    druh: "scio",
+    zadani: "\\text{Pro }x>0\\text{ zjednodušte }\\sqrt[3]{x^2\\sqrt{x^8}}\\text{.}",
+    moznosti: [
+      "x^3",
+      "x^{\\frac{10}{3}}",
+      "x^2",
+      "x^{\\frac{14}{3}}"
+    ],
+    spravna: 2,
+    postup: [
+      "\\sqrt{x^8}=x^4\\text{, protože }x^4\\ge0.",
+      "\\sqrt[3]{x^2x^4}=\\sqrt[3]{x^6}=\\boxed{x^2}."
+    ],
+    typickaChyba: "Přičítat řády odmocnin k exponentům. Postupuj zevnitř ven: vnitřní odmocnina dělí exponent dvěma, vnější třemi.",
+    verified: true,
+    verifiedBy: "code",
+    zdroj: "handwritten"
+  },
+  {
+    id: "vyraz-60",
+    okruh: "vyrazy",
+    tema: "vyrazy",
+    podtema: "vyr-mnohocleny",
+    podtemaNazev: "Mnohočleny a vzorce",
+    obtiznost: 4,
+    druh: "scio",
+    zadani: "\\text{Jaký je zbytek po dělení mnohočlenu }3x^3-2x^2+5x+1\\text{ mnohočlenem }x^2+2\\text{?}",
+    moznosti: [
+      "-x+5",
+      "-x-3",
+      "x+5",
+      "5"
+    ],
+    spravna: 0,
+    postup: [
+      "\\text{První člen podílu je }3x\\text{. Odečteme }3x(x^2+2)\\text{ a zbude }-2x^2-x+1.",
+      "\\text{Druhý člen je }-2\\text{. Odečteme }-2(x^2+2)\\text{ a zbude }-x+5.",
+      "\\text{Stupeň zbytku je nižší než }2\\text{. Kontrola: }(x^2+2)(3x-2)+(-x+5)=3x^3-2x^2+5x+1."
+    ],
+    typickaChyba: "Při odečítání záporného násobku dělitele zapomenout změnit znaménka. Zbytek po dělení kvadratickým mnohočlenem nemusí být konstanta.",
+    verified: true,
+    verifiedBy: "code",
+    zdroj: "handwritten"
+  },
+  {
+    id: "vyraz-61",
+    okruh: "vyrazy",
+    tema: "vyrazy",
+    podtema: "vyr-mnohocleny",
+    podtemaNazev: "Mnohočleny a vzorce",
+    obtiznost: 3,
+    druh: "scio",
+    zadani: "\\text{Rozložte na součin }27u^3+8v^3\\text{.}",
+    moznosti: [
+      "(3u+2v)(9u^2+6uv+4v^2)",
+      "(3u-2v)(9u^2+6uv+4v^2)",
+      "(3u+2v)(9u^2-6uv+4v^2)",
+      "(3u+2v)^3"
+    ],
+    spravna: 2,
+    postup: [
+      "27u^3+8v^3=(3u)^3+(2v)^3.",
+      "a^3+b^3=(a+b)(a^2-ab+b^2).",
+      "\\boxed{(3u+2v)(9u^2-6uv+4v^2)}."
+    ],
+    typickaChyba: "Zaměnit součet krychlí za třetí mocninu součtu. Ve druhé závorce je smíšený člen se záporným znaménkem.",
+    verified: true,
+    verifiedBy: "code",
+    zdroj: "handwritten"
+  },
+  {
+    id: "vyraz-62",
+    okruh: "vyrazy",
+    tema: "vyrazy",
+    podtema: "vyr-lomene",
+    podtemaNazev: "Lomené výrazy",
+    obtiznost: 3,
+    druh: "scio",
+    zadani: "\\text{Zjednodušte }\\frac{x^2-16}{x^2-2x}\\cdot\\frac{x}{x+4}\\text{ na původním definičním oboru.}",
+    moznosti: [
+      "\\frac{x-4}{x-2}",
+      "\\frac{x+4}{x-2}",
+      "\\frac{x-4}{x}",
+      "\\frac{x-4}{x+2}"
+    ],
+    spravna: 0,
+    postup: [
+      "\\text{Původní podmínky: }x\\ne0,\\quad x\\ne2,\\quad x\\ne-4.",
+      "\\frac{(x-4)(x+4)}{x(x-2)}\\cdot\\frac{x}{x+4}=\\boxed{\\frac{x-4}{x-2}}.",
+      "\\text{Všechny tři původní zákazy platí i po krácení.}"
+    ],
+    typickaChyba: "Krátit sčítance místo činitelů nebo po krácení zapomenout vyloučené hodnoty 0 a −4.",
+    verified: true,
+    verifiedBy: "code",
+    zdroj: "handwritten"
+  },
+  {
+    id: "vyraz-d19",
+    okruh: "vyrazy",
+    tema: "vyrazy",
+    podtema: "vyr-mnohocleny",
+    podtemaNazev: "Mnohočleny a vzorce",
+    obtiznost: 1,
+    druh: "dril",
+    zadani: "\\text{Jaký stupeň má mnohočlen }(4x^5+3x^3-2)-(4x^5-x^2+6)\\text{?}",
+    moznosti: [
+      "5",
+      "4",
+      "3",
+      "2"
+    ],
+    spravna: 2,
+    postup: [
+      "4x^5+3x^3-2-4x^5+x^2-6=3x^3+x^2-8.",
+      "\\text{Nejvyšší zbývající mocnina je }x^3\\text{, stupeň je }\\boxed3."
+    ],
+    typickaChyba: "Určit stupeň před úpravou. Členy s pátou mocninou se odečtou, proto stupeň není 5.",
+    verified: true,
+    verifiedBy: "code",
+    zdroj: "handwritten"
+  },
+  {
+    id: "vyraz-d20",
+    okruh: "vyrazy",
+    tema: "vyrazy",
+    podtema: "vyr-mnohocleny",
+    podtemaNazev: "Mnohočleny a vzorce",
+    obtiznost: 2,
+    druh: "dril",
+    zadani: "\\text{Pro }x\\ne0\\text{ vydělte }\\frac{12x^4-8x^2+4x}{4x}\\text{.}",
+    moznosti: [
+      "3x^3-2x+1",
+      "3x^3-2x",
+      "3x^4-2x^2+x",
+      "3x^3-2x-1"
+    ],
+    spravna: 0,
+    postup: [
+      "\\frac{12x^4}{4x}-\\frac{8x^2}{4x}+\\frac{4x}{4x}=3x^3-2x+1.",
+      "\\boxed{3x^3-2x+1}\\text{, stále pro }x\\ne0."
+    ],
+    typickaChyba: "Zapomenout vydělit poslední člen nebo jej zkrátit na nulu. Nenulový výraz dělený sebou samým dává jedničku.",
+    verified: true,
+    verifiedBy: "code",
+    zdroj: "handwritten"
   },
 ];

@@ -316,7 +316,7 @@ export const ROVNICE: Task[] = [
       "x = -1 \\text{ nesplňuje podmínku } x \\ge 0 \\Rightarrow \\boxed{x = 3}",
     ],
     typickaChyba:
-      "Umocnění není ekvivalentní úprava: kořen x = −1 vyhovuje umocněné rovnici, ale v původní by se odmocnina měla rovnat zápornému číslu.",
+      "Umocnění bez zachování znaménkových podmínek může přidat kořen: kandidát x = −1 vyhovuje umocněné rovnici, ale v původní by se odmocnina měla rovnat zápornému číslu.",
     verified: true,
     verifiedBy: "code",
     zdroj: "handwritten",
@@ -339,7 +339,7 @@ export const ROVNICE: Task[] = [
       "\\text{Zkouška: } \\sqrt{9} - \\sqrt{1} = 3 - 1 = 2 \\Rightarrow \\boxed{x = 4}",
     ],
     typickaChyba:
-      "Před umocněním musí být odmocnina osamostatněná; kdo umocní rozdíl přímo jako rozdíl druhých mocnin, dostane nesmysl 8 = 4.",
+      "Před umocněním je výhodné jednu odmocninu osamostatnit; kdo umocní rozdíl přímo jako rozdíl druhých mocnin, dostane nesmysl 8 = 4.",
     verified: true,
     verifiedBy: "code",
     zdroj: "handwritten",
@@ -602,7 +602,7 @@ export const ROVNICE: Task[] = [
       "x = -\\frac{\\pi}{6} + 2k\\pi \\text{ nebo } x = \\frac{\\pi}{2} + 2k\\pi\\text{; v intervalu } \\boxed{\\{\\frac{\\pi}{2};\\, \\frac{11\\pi}{6}\\}}",
     ],
     typickaChyba:
-      "Součet sinu a kosinu se bez kondenzace řešit nedá — a po ní nezapomeň obě větve sinu; každá dá v intervalu jedno řešení.",
+      "Kondenzace je zde rychlý způsob řešení součtu sinu a kosinu — a po ní nezapomeň obě větve sinu; každá dá v intervalu jedno řešení.",
     verified: true,
     verifiedBy: "code",
     zdroj: "handwritten",
@@ -630,7 +630,7 @@ export const ROVNICE: Task[] = [
       "-x > 17 \\Rightarrow \\boxed{x \\in (-\\infty;\\, -17)}",
     ],
     typickaChyba:
-      "Dvě pasti najednou: minus před zlomkem mění znaménko celé čitatelky (−2(2x+1) = −4x−2) a dělení záporným číslem otáčí nerovnost.",
+      "Dvě pasti najednou: minus před zlomkem mění znaménko celého čitatele (−2(2x+1) = −4x−2) a dělení záporným číslem otáčí nerovnost.",
     verified: true,
     verifiedBy: "code",
     zdroj: "handwritten",
@@ -874,12 +874,12 @@ export const ROVNICE: Task[] = [
       "\\text{přičtení téhož čísla k oběma stranám}",
       "\\text{vynásobení obou stran číslem } 2",
       "\\text{vynásobení obou stran číslem } 0",
-      "\\text{odečtení téhož výrazu od obou stran}",
+      "\\text{odečtení téhož definovaného výrazu od obou stran}",
     ],
     spravna: 2,
     postup: [
       "\\text{Přičtení, odečtení a násobení nenulovým číslem řešení nemění.}",
-      "\\text{Násobení nulou z každé rovnice udělá } 0 = 0\\text{ — původní řešení se ztratí.}",
+      "\\text{Násobení nulou z každé rovnice udělá } 0 = 0\\text{ — původní omezení se zruší.}",
       "\\boxed{\\text{vynásobení obou stran číslem } 0}",
     ],
     typickaChyba: "Ekvivalentní úprava nesmí řešení ani přidat, ani ubrat; násobení nulou je extrémní případ neekvivalentní úpravy.",
@@ -905,7 +905,7 @@ export const ROVNICE: Task[] = [
       "x + 8 = 6 \\Rightarrow \\boxed{x = -2}",
     ],
     typickaChyba:
-      "Minus před zlomkem mění znaménko celé čitatelky: −3(x − 2) je −3x + 6, ne −3x − 6.",
+      "Minus před zlomkem mění znaménko celého čitatele: −3(x − 2) je −3x + 6, ne −3x − 6.",
     verified: true,
     verifiedBy: "code",
     zdroj: "handwritten",
@@ -1802,4 +1802,545 @@ export const ROVNICE: Task[] = [
     verifiedBy: "code",
     zdroj: "handwritten",
   },
+  {
+  "id": "rovn-59",
+  "okruh": "rovnice",
+  "tema": "rovnice",
+  "podtema": "rovn-linearni",
+  "podtemaNazev": "Lineární rovnice",
+  "obtiznost": 3,
+  "druh": "scio",
+  "zadani": "\\text{Kolik reálných řešení má rovnice } \\frac{x+4}{x-3}=\\frac7{x-3}\\text{?}",
+  "moznosti": [
+    "0",
+    "1",
+    "2",
+    "\\text{nekonečně mnoho}"
+  ],
+  "spravna": 0,
+  "postup": [
+    "\\text{Podmínka: }x\\ne3.",
+    "x+4=7\\Rightarrow x=3.",
+    "\\text{Jediný kandidát je zakázaný. Rovnice nemá řešení.}"
+  ],
+  "typickaChyba": "Řešení upravené rovnice musí splňovat původní podmínky.",
+  "verified": true,
+  "verifiedBy": "code",
+  "zdroj": "handwritten"
+},
+  {
+  "id": "rovn-60",
+  "okruh": "rovnice",
+  "tema": "rovnice",
+  "podtema": "rovn-linearni",
+  "podtemaNazev": "Lineární rovnice",
+  "obtiznost": 3,
+  "druh": "scio",
+  "zadani": "\\text{Dvě půjčovny účtují za den }180\\text{ Kč a }120\\text{ Kč. První připočítá jednorázově }240\\text{ Kč, druhá }660\\text{ Kč. Při kolika dnech stojí pronájem stejně?}",
+  "moznosti": [
+    "5",
+    "6",
+    "7",
+    "8"
+  ],
+  "spravna": 2,
+  "postup": [
+    "180d+240=120d+660",
+    "60d=420\\Rightarrow d=7.",
+    "180\\cdot7+240=120\\cdot7+660=1500."
+  ],
+  "typickaChyba": "Jednorázový poplatek nenásob počtem dní.",
+  "verified": true,
+  "verifiedBy": "code",
+  "zdroj": "handwritten"
+},
+  {
+  "id": "rovn-61",
+  "okruh": "rovnice",
+  "tema": "rovnice",
+  "podtema": "rovn-linearni",
+  "podtemaNazev": "Lineární rovnice",
+  "obtiznost": 4,
+  "druh": "scio",
+  "zadani": "\\text{Na trase }48\\text{ km jede první cyklista rychlostí }12\\text{ km/h, druhý }24\\text{ km/h. Oba mají stejný počet zastávek. První na každé odpočívá }10\\text{ minut, druhý }25\\text{ minut. Vyrazí i dorazí současně. Kolik je zastávek?}",
+  "moznosti": [
+    "4",
+    "6",
+    "8",
+    "12"
+  ],
+  "spravna": 2,
+  "postup": [
+    "\\text{Jízda trvá }240\\text{ a }120\\text{ minut.}",
+    "240+10n=120+25n\\Rightarrow120=15n\\Rightarrow n=8.",
+    "\\text{Obě celkové doby jsou }320\\text{ minut.}"
+  ],
+  "typickaChyba": "Převeď dobu jízdy a odpočinku na stejné jednotky.",
+  "verified": true,
+  "verifiedBy": "code",
+  "zdroj": "handwritten"
+},
+  {
+  "id": "rovn-62",
+  "okruh": "rovnice",
+  "tema": "rovnice",
+  "podtema": "rovn-iraci",
+  "podtemaNazev": "Iracionální rovnice",
+  "obtiznost": 3,
+  "druh": "scio",
+  "zadani": "\\text{Určete součet všech reálných řešení rovnice }x-2\\sqrt{x}-8=0\\text{.}",
+  "moznosti": [
+    "2",
+    "4",
+    "16",
+    "20"
+  ],
+  "spravna": 2,
+  "postup": [
+    "t=\\sqrt{x}\\ge0,\\quad t^2-2t-8=(t-4)(t+2)=0.",
+    "t=4\\text{ vyhovuje; }t=-2\\text{ je nepřípustné.}",
+    "x=16,\\quad16-2\\sqrt{16}-8=0."
+  ],
+  "typickaChyba": "Zápornou hodnotu substituce nelze převést na další řešení umocněním.",
+  "verified": true,
+  "verifiedBy": "code",
+  "zdroj": "handwritten"
+},
+  {
+  "id": "rovn-63",
+  "okruh": "rovnice",
+  "tema": "rovnice",
+  "podtema": "rovn-kvadrat",
+  "podtemaNazev": "Kvadratické rovnice",
+  "obtiznost": 3,
+  "druh": "scio",
+  "zadani": "\\text{Kolik různých reálných kořenů má rovnice }x^5=7x^3\\text{?}",
+  "moznosti": [
+    "1",
+    "2",
+    "3",
+    "5"
+  ],
+  "spravna": 2,
+  "postup": [
+    "x^3(x^2-7)=0.",
+    "x=0\\text{ nebo }x=\\pm\\sqrt7.",
+    "\\text{Jsou to tři různé kořeny.}"
+  ],
+  "typickaChyba": "Dělením x³ by se ztratil nulový kořen; jeho násobnost nezvyšuje počet různých kořenů.",
+  "verified": true,
+  "verifiedBy": "code",
+  "zdroj": "handwritten"
+},
+  {
+  "id": "rovn-64",
+  "okruh": "rovnice",
+  "tema": "rovnice",
+  "podtema": "rovn-kvadrat",
+  "podtemaNazev": "Kvadratické rovnice",
+  "obtiznost": 3,
+  "druh": "scio",
+  "zadani": "\\text{Pro reálné }x\\text{ platí }x+\\frac1x=5\\text{. Určete }x^2+\\frac1{x^2}\\text{.}",
+  "moznosti": [
+    "25",
+    "23",
+    "27",
+    "10"
+  ],
+  "spravna": 1,
+  "postup": [
+    "\\left(x+\\frac1x\\right)^2=x^2+2+\\frac1{x^2}=25.",
+    "x^2+\\frac1{x^2}=23."
+  ],
+  "typickaChyba": "Při umocnění součtu nezapomeň smíšený člen 2.",
+  "verified": true,
+  "verifiedBy": "code",
+  "zdroj": "handwritten"
+},
+  {
+  "id": "rovn-65",
+  "okruh": "rovnice",
+  "tema": "rovnice",
+  "podtema": "rovn-exp",
+  "podtemaNazev": "Exponenciální rovnice",
+  "obtiznost": 4,
+  "druh": "scio",
+  "zadani": "\\text{Určete součet všech reálných řešení rovnice }4^{x^2}=2^{3x+2}\\text{.}",
+  "moznosti": [
+    "2",
+    "\\frac32",
+    "-\\frac12",
+    "4"
+  ],
+  "spravna": 1,
+  "postup": [
+    "2^{2x^2}=2^{3x+2}\\Rightarrow2x^2-3x-2=0.",
+    "(2x+1)(x-2)=0\\Rightarrow x=-\\frac12\\text{ nebo }x=2.",
+    "\\text{Součet je }\\frac32."
+  ],
+  "typickaChyba": "Při přepisu 4 na 2 se celý exponent násobí dvěma.",
+  "verified": true,
+  "verifiedBy": "code",
+  "zdroj": "handwritten"
+},
+  {
+  "id": "rovn-66",
+  "okruh": "rovnice",
+  "tema": "rovnice",
+  "podtema": "rovn-param",
+  "podtemaNazev": "Rovnice s parametrem",
+  "obtiznost": 4,
+  "druh": "scio",
+  "zadani": "\\text{Pro které }p>0\\text{ má rovnice }x^2-6x+\\log_2 p=0\\text{ dvojnásobný kořen?}",
+  "moznosti": [
+    "9",
+    "64",
+    "256",
+    "512"
+  ],
+  "spravna": 3,
+  "postup": [
+    "D=36-4\\log_2p=0\\Rightarrow\\log_2p=9.",
+    "p=2^9=512.",
+    "\\text{Rovnice pak je }(x-3)^2=0."
+  ],
+  "typickaChyba": "Hodnota logaritmu 9 není hledaný parametr p.",
+  "verified": true,
+  "verifiedBy": "code",
+  "zdroj": "handwritten"
+},
+  {
+  "id": "rovn-67",
+  "okruh": "rovnice",
+  "tema": "rovnice",
+  "podtema": "rovn-nerov",
+  "podtemaNazev": "Nerovnice",
+  "obtiznost": 3,
+  "druh": "scio",
+  "zadani": "\\text{Kolik kladných celých čísel řeší nerovnici }x^2-3x-10\\le0\\text{?}",
+  "moznosti": [
+    "4",
+    "5",
+    "6",
+    "8"
+  ],
+  "spravna": 1,
+  "postup": [
+    "(x-5)(x+2)\\le0\\Rightarrow x\\in\\langle-2;5\\rangle.",
+    "\\text{Kladná celá řešení jsou }1,2,3,4,5\\text{, tedy pět čísel.}"
+  ],
+  "typickaChyba": "Nula není kladná a pravý kraj 5 do řešení patří.",
+  "verified": true,
+  "verifiedBy": "code",
+  "zdroj": "handwritten"
+},
+  {
+  "id": "rovn-68",
+  "okruh": "rovnice",
+  "tema": "rovnice",
+  "podtema": "rovn-nerov",
+  "podtemaNazev": "Nerovnice",
+  "obtiznost": 3,
+  "druh": "scio",
+  "zadani": "\\text{Řešte soustavu }3x-2>4,\\quad2x+1\\le11\\text{.}",
+  "moznosti": [
+    "x\\in\\langle2;5\\rangle",
+    "x\\in(2;5)",
+    "x\\in(2;5\\rangle",
+    "x\\in(-\\infty;5\\rangle"
+  ],
+  "spravna": 2,
+  "postup": [
+    "3x>6\\Rightarrow x>2,\\qquad2x\\le10\\Rightarrow x\\le5.",
+    "\\text{Průnik je }x\\in(2;5\\rangle."
+  ],
+  "typickaChyba": "Soustava znamená průnik; levá nerovnost je ostrá a pravá neostrá.",
+  "verified": true,
+  "verifiedBy": "code",
+  "zdroj": "handwritten"
+},
+  {
+  "id": "rovn-69",
+  "okruh": "rovnice",
+  "tema": "rovnice",
+  "podtema": "rovn-nerov",
+  "podtemaNazev": "Nerovnice",
+  "obtiznost": 4,
+  "druh": "scio",
+  "zadani": "\\text{Řešte nerovnici }x^2(x+2)\\le0\\text{.}",
+  "moznosti": [
+    "x\\in(-\\infty;-2\\rangle",
+    "x\\in(-\\infty;-2\\rangle\\cup\\{0\\}",
+    "x\\in\\langle-2;0\\rangle",
+    "x\\in\\langle-2;\\infty)"
+  ],
+  "spravna": 1,
+  "postup": [
+    "\\text{Pro }x=0\\text{ je součin nulový.}",
+    "\\text{Pro }x\\ne0\\text{ je }x^2>0\\text{, tedy }x+2\\le0\\Rightarrow x\\le-2.",
+    "x\\in(-\\infty;-2\\rangle\\cup\\{0\\}."
+  ],
+  "typickaChyba": "Dělení x² bez samostatného vyšetření nuly ztratí izolované řešení.",
+  "verified": true,
+  "verifiedBy": "code",
+  "zdroj": "handwritten"
+},
+  {
+  "id": "rovn-70",
+  "okruh": "rovnice",
+  "tema": "rovnice",
+  "podtema": "rovn-absolutni",
+  "podtemaNazev": "Absolutní hodnota",
+  "obtiznost": 2,
+  "druh": "scio",
+  "zadani": "\\text{Určete součet všech řešení rovnice }|3x+2|=10\\text{.}",
+  "moznosti": [
+    "\\frac{16}{3}",
+    "-\\frac43",
+    "4",
+    "\\frac83"
+  ],
+  "spravna": 1,
+  "postup": [
+    "3x+2=10\\Rightarrow x=\\frac83.",
+    "3x+2=-10\\Rightarrow x=-4.",
+    "\\frac83-4=-\\frac43."
+  ],
+  "typickaChyba": "Rovnost s kladnou absolutní hodnotou má dvě větve.",
+  "verified": true,
+  "verifiedBy": "code",
+  "zdroj": "handwritten"
+},
+  {
+  "id": "rovn-71",
+  "okruh": "rovnice",
+  "tema": "rovnice",
+  "podtema": "rovn-absolutni",
+  "podtemaNazev": "Absolutní hodnota",
+  "obtiznost": 3,
+  "druh": "scio",
+  "zadani": "\\text{Řešte nerovnici }|2x-1|\\le5\\text{.}",
+  "moznosti": [
+    "x\\in\\langle-2;3\\rangle",
+    "x\\in(-2;3)",
+    "x\\in\\langle-3;2\\rangle",
+    "x\\in(-\\infty;-2\\rangle\\cup\\langle3;\\infty)"
+  ],
+  "spravna": 0,
+  "postup": [
+    "-5\\le2x-1\\le5.",
+    "-4\\le2x\\le6\\Rightarrow x\\in\\langle-2;3\\rangle."
+  ],
+  "typickaChyba": "Menší absolutní hodnota vybírá vnitřek intervalu; rovnost zahrnuje kraje.",
+  "verified": true,
+  "verifiedBy": "code",
+  "zdroj": "handwritten"
+},
+  {
+  "id": "rovn-72",
+  "okruh": "rovnice",
+  "tema": "rovnice",
+  "podtema": "rovn-absolutni",
+  "podtemaNazev": "Absolutní hodnota",
+  "obtiznost": 4,
+  "druh": "scio",
+  "zadani": "\\text{Řešte nerovnici }|x+2|+|x-4|\\le10\\text{.}",
+  "moznosti": [
+    "x\\in\\langle-2;4\\rangle",
+    "x\\in\\langle-4;6\\rangle",
+    "x\\in(-4;6)",
+    "x\\in\\langle-6;4\\rangle"
+  ],
+  "spravna": 1,
+  "postup": [
+    "\\text{Pro }x<-2:\\ -x-2+4-x\\le10\\Rightarrow x\\ge-4.",
+    "\\text{Pro }-2\\le x\\le4:\\ x+2+4-x=6\\le10.",
+    "\\text{Pro }x>4:\\ x+2+x-4\\le10\\Rightarrow x\\le6.",
+    "\\text{Po omezení větví a sjednocení: }x\\in\\langle-4;6\\rangle."
+  ],
+  "typickaChyba": "Každé dílčí řešení nejprve omez na interval, pro který jsi odstranil absolutní hodnoty.",
+  "verified": true,
+  "verifiedBy": "code",
+  "zdroj": "handwritten"
+},
+  {
+  "id": "rovn-73",
+  "okruh": "rovnice",
+  "tema": "rovnice",
+  "podtema": "rovn-absolutni",
+  "podtemaNazev": "Absolutní hodnota",
+  "obtiznost": 3,
+  "druh": "scio",
+  "zadani": "\\text{Kolik celých čísel splňuje }\\left|\\frac{18}{x}\\right|>3\\text{?}",
+  "moznosti": [
+    "5",
+    "10",
+    "11",
+    "12"
+  ],
+  "spravna": 1,
+  "postup": [
+    "x\\ne0,\\quad\\frac{18}{|x|}>3\\Rightarrow0<|x|<6.",
+    "\\text{Vyhovují čísla }\\pm1,\\pm2,\\pm3,\\pm4,\\pm5\\text{, tedy deset čísel.}"
+  ],
+  "typickaChyba": "Nula je zakázaná a čísla ±6 nevyhovují ostré nerovnosti.",
+  "verified": true,
+  "verifiedBy": "code",
+  "zdroj": "handwritten"
+},
+  {
+  "id": "rovn-74",
+  "okruh": "rovnice",
+  "tema": "rovnice",
+  "podtema": "rovn-absolutni",
+  "podtemaNazev": "Absolutní hodnota",
+  "obtiznost": 4,
+  "druh": "scio",
+  "zadani": "\\text{Kolik uspořádaných dvojic reálných čísel }(x,y)\\text{ řeší soustavu }|x+2|+|y-3|=4,\\quad |x+2|-y=-3\\text{?}",
+  "moznosti": [
+    "0",
+    "1",
+    "2",
+    "4"
+  ],
+  "spravna": 2,
+  "postup": [
+    "\\text{Z druhé rovnice: }|x+2|=y-3\\ge0\\Rightarrow y\\ge3.",
+    "\\text{První rovnice: }(y-3)+(y-3)=4\\Rightarrow y=5.",
+    "|x+2|=2\\Rightarrow x=0\\text{ nebo }x=-4.",
+    "\\text{Dvě dvojice: }(0,5),\\ (-4,5)."
+  ],
+  "typickaChyba": "Jedna hodnota y neznamená jediné řešení soustavy; dopočítej všechny hodnoty x.",
+  "verified": true,
+  "verifiedBy": "code",
+  "zdroj": "handwritten"
+},
+  {
+  "id": "rovn-75",
+  "okruh": "rovnice",
+  "tema": "rovnice",
+  "podtema": "rovn-absolutni",
+  "podtemaNazev": "Absolutní hodnota",
+  "obtiznost": 4,
+  "druh": "scio",
+  "zadani": "\\text{Kolik celých čísel splňuje současně }|x|\\le4\\text{ a }|x-1|\\ge3\\text{?}",
+  "moznosti": [
+    "3",
+    "4",
+    "5",
+    "6"
+  ],
+  "spravna": 1,
+  "postup": [
+    "\\text{První podmínka: }-4\\le x\\le4.",
+    "\\text{Druhá podmínka: }x\\le-2\\text{ nebo }x\\ge4.",
+    "\\text{Průnik: }\\langle-4;-2\\rangle\\cup\\{4\\}.",
+    "\\text{Celá řešení: }-4,-3,-2,4\\text{, tedy čtyři.}"
+  ],
+  "typickaChyba": "Uvnitř druhé nerovnice sjednotíš větve; mezi dvěma nerovnicemi bereš průnik.",
+  "verified": true,
+  "verifiedBy": "code",
+  "zdroj": "handwritten"
+},
+  {
+  "id": "rovn-76",
+  "okruh": "rovnice",
+  "tema": "rovnice",
+  "podtema": "rovn-log",
+  "podtemaNazev": "Logaritmické rovnice",
+  "obtiznost": 3,
+  "druh": "scio",
+  "zadani": "\\text{Určete součin všech řešení rovnice }(\\log_2x)^2+\\log_2x-2=0\\text{.}",
+  "moznosti": [
+    "-2",
+    "\\frac12",
+    "\\frac14",
+    "2"
+  ],
+  "spravna": 1,
+  "postup": [
+    "x>0,\\quad t=\\log_2x\\in\\mathbb R.",
+    "(t+2)(t-1)=0\\Rightarrow t=-2\\text{ nebo }t=1.",
+    "x=\\frac14\\text{ nebo }x=2;\\quad\\frac14\\cdot2=\\frac12."
+  ],
+  "typickaChyba": "Logaritmus může být záporný. Kladný musí být jeho argument x, nikoli substituce t.",
+  "verified": true,
+  "verifiedBy": "code",
+  "zdroj": "handwritten"
+},
+  {
+  "id": "rovn-d19",
+  "okruh": "rovnice",
+  "tema": "rovnice",
+  "podtema": "rovn-nerov",
+  "podtemaNazev": "Nerovnice",
+  "obtiznost": 2,
+  "druh": "dril",
+  "zadani": "\\text{Řešte nerovnici }(x+3)^2\\le0\\text{.}",
+  "moznosti": [
+    "\\varnothing",
+    "\\mathbb R",
+    "\\{-3\\}",
+    "(-\\infty;-3\\rangle"
+  ],
+  "spravna": 2,
+  "postup": [
+    "\\text{Čtverec je nezáporný, takže musí být nulový.}",
+    "x+3=0\\Rightarrow x=-3."
+  ],
+  "typickaChyba": "Dvojnásobný kořen neodděluje kladné a záporné intervaly.",
+  "verified": true,
+  "verifiedBy": "code",
+  "zdroj": "handwritten"
+},
+  {
+  "id": "rovn-d20",
+  "okruh": "rovnice",
+  "tema": "rovnice",
+  "podtema": "rovn-nerov",
+  "podtemaNazev": "Nerovnice",
+  "obtiznost": 2,
+  "druh": "dril",
+  "zadani": "\\text{Řešte nerovnici }-2x^2-3>0\\text{.}",
+  "moznosti": [
+    "\\mathbb R",
+    "\\{0\\}",
+    "\\varnothing",
+    "(0;\\infty)"
+  ],
+  "spravna": 2,
+  "postup": [
+    "-2x^2\\le0\\Rightarrow-2x^2-3\\le-3<0.",
+    "\\text{Žádné reálné číslo nevyhovuje.}"
+  ],
+  "typickaChyba": "Trojčlen bez reálných kořenů má všude stejné znaménko; není nutné hledat intervaly.",
+  "verified": true,
+  "verifiedBy": "code",
+  "zdroj": "handwritten"
+},
+  {
+  "id": "rovn-d21",
+  "okruh": "rovnice",
+  "tema": "rovnice",
+  "podtema": "rovn-absolutni",
+  "podtemaNazev": "Absolutní hodnota",
+  "obtiznost": 1,
+  "druh": "dril",
+  "zadani": "\\text{Kolik reálných řešení má rovnice }|x-6|=-2\\text{?}",
+  "moznosti": [
+    "0",
+    "1",
+    "2",
+    "\\text{nekonečně mnoho}"
+  ],
+  "spravna": 0,
+  "postup": [
+    "|x-6|\\ge0\\text{ pro každé reálné }x.",
+    "\\text{Nemůže se rovnat }-2\\text{; rovnice nemá řešení.}"
+  ],
+  "typickaChyba": "Než začneš rozepisovat větve, porovnej znaménka stran.",
+  "verified": true,
+  "verifiedBy": "code",
+  "zdroj": "handwritten"
+},
 ];

@@ -12,11 +12,12 @@ export const OKRUHY: OkruhMeta[] = [
   {
     id: "zaklady",
     nazev: "Základní poznatky",
-    popis: "Číselné obory, dělitelnost, procenta, množiny, logika",
+    popis: "Čísla, mocniny, zlomky, dělitelnost, poměry, procenta, množiny, logika",
     podtemata: [
       "Číselné obory",
+      "Mocniny, odmocniny a zlomky",
       "Dělitelnost, NSD, NSN",
-      "Procenta, poměry, trojčlenka",
+      "Procenta, poměry, trojčlenka, zaokrouhlování",
       "Množiny a intervaly",
       "Výroková logika",
     ],
@@ -44,7 +45,8 @@ export const OKRUHY: OkruhMeta[] = [
       "Iracionální rovnice",
       "Exponenciální a logaritmické rovnice",
       "Goniometrické rovnice",
-      "Nerovnice",
+      "Nerovnice a jejich soustavy",
+      "Rovnice a nerovnice s absolutní hodnotou",
     ],
   },
   {

@@ -22,7 +22,7 @@ export const ZAKLADY: Task[] = [
     postup: [
       "\\text{A: } \\frac{\\sqrt{18}}{\\sqrt{2}} = \\sqrt{\\frac{18}{2}} = \\sqrt{9} = 3 \\text{ — racionální.}",
       "\\text{B: } (\\sqrt{5})^2 = 5 \\text{ — racionální. C: } \\sqrt{\\frac{49}{4}} = \\frac{7}{2} \\text{ — racionální.}",
-      "\\text{D: } \\sqrt{2}\\cdot\\sqrt{3} = \\sqrt{6} \\text{ — druhá odmocnina z čísla bez čtverce, iracionální.}",
+      "\\text{D: } \\sqrt{2}\\cdot\\sqrt{3} = \\sqrt{6} \\text{ — 6 není druhou mocninou celého čísla, odmocnina je iracionální.}",
       "\\boxed{\\sqrt{2}\\cdot\\sqrt{3}}",
     ],
     typickaChyba:
@@ -104,7 +104,7 @@ export const ZAKLADY: Task[] = [
       "(\\sqrt{5} - 2) + (3 - \\sqrt{5}) = 1 \\Rightarrow \\boxed{1}",
     ],
     typickaChyba:
-      "Odmocnit bez rozboru znaménka a napsat (2 − √5) + (3 − √5). Absolutní hodnota záporného čísla mění znaménko.",
+      "Odstranit absolutní hodnoty bez rozboru znaménka a napsat (2 − √5) + (3 − √5). Absolutní hodnota záporného čísla mění znaménko.",
     verified: true,
     verifiedBy: "code",
     zdroj: "handwritten",
@@ -358,7 +358,7 @@ export const ZAKLADY: Task[] = [
     obtiznost: 2,
     druh: "scio",
     zadani:
-      "\\text{Šest dělníků postaví zeď za } 15 \\text{ dní. Kolik dělníků postaví stejnou zeď za } 10 \\text{ dní?}",
+      "\\text{Šest stejně výkonných dělníků postaví zeď za } 15 \\text{ dní. Kolik dělníků postaví stejnou zeď za } 10 \\text{ dní?}",
     moznosti: ["4", "9", "8", "11"],
     spravna: 1,
     postup: [
@@ -1041,7 +1041,7 @@ export const ZAKLADY: Task[] = [
       "\\boxed{\\frac{1}{6}}",
     ],
     typickaChyba:
-      "Odečíst x od 10x místo od 100x. Posun musí zakrýt celou periodu včetně neperiodické části, jinak se číslice za desetinnou čárkou neodečtou.",
+      "Považovat celý blok 16 za periodu a napsat 16/99. Opakuje se jen šestka; odečtení 100x − 10x odstraní periodickou část a dá celočíselnou pravou stranu.",
     verified: true,
     verifiedBy: "code",
     zdroj: "handwritten",
@@ -1332,7 +1332,7 @@ export const ZAKLADY: Task[] = [
     obtiznost: 3,
     druh: "scio",
     zadani:
-      "\\text{Pět čerpadel vyčerpá nádrž za } 12 \\text{ hodin. Za jak dlouho vyčerpá stejnou nádrž } 8 \\text{ čerpadel?}",
+      "\\text{Pět stejně výkonných čerpadel vyčerpá nádrž za } 12 \\text{ hodin. Za jak dlouho vyčerpá stejnou nádrž } 8 \\text{ čerpadel?}",
     moznosti: [
       "19 \\text{ h } 12 \\text{ min}",
       "7 \\text{ h } 30 \\text{ min}",
@@ -1520,7 +1520,7 @@ export const ZAKLADY: Task[] = [
       "\\text{Neprší nebo není zima.}",
       "\\text{Neprší a není zima.}",
       "\\text{Prší nebo je zima.}",
-      "\\text{Jestliže prší, není zima.}",
+      "\\text{Jestliže neprší, není zima.}",
     ],
     spravna: 0,
     postup: [
@@ -1759,7 +1759,7 @@ export const ZAKLADY: Task[] = [
     moznosti: [
       "\\{1;\\, 2;\\, 3\\}",
       "\\{2\\}",
-      "\\{1;\\, 2;\\, 2;\\, 3\\}",
+      "\\{1;\\, 2;\\, 3;\\, 4\\}",
       "\\{1;\\, 3\\}",
     ],
     spravna: 0,
@@ -1768,7 +1768,7 @@ export const ZAKLADY: Task[] = [
       "\\boxed{\\{1;\\, 2;\\, 3\\}}",
     ],
     typickaChyba:
-      "Napsat dvojku dvakrát, nebo ji naopak vynechat. Ve sjednocení je každý prvek právě jednou.",
+      "Zaměnit sjednocení s průnikem, vynechat společný prvek nebo přidat prvek 4, který není ani v jedné množině.",
     verified: true,
     verifiedBy: "code",
     zdroj: "handwritten",
@@ -1820,5 +1820,564 @@ export const ZAKLADY: Task[] = [
     verified: true,
     verifiedBy: "independent-solve",
     zdroj: "handwritten",
+  },
+  {
+    id: "zakl-57",
+    okruh: "zaklady",
+    tema: "zaklady",
+    podtema: "zakl-mnoziny",
+    podtemaNazev: "Množiny a intervaly",
+    obtiznost: 3,
+    druh: "scio",
+    zadani: "\\text{Z }42\\text{ členů klubu používá alespoň jednu z aplikací A a B }27\\text{ lidí. Obě používá }5\\text{ lidí. A používá o }8\\text{ lidí více než B. Kolik lidí používá B včetně těch, kteří používají obě?}",
+    moznosti: [
+      "9",
+      "12",
+      "17",
+      "10"
+    ],
+    spravna: 1,
+    postup: [
+      "\\text{Označme celkový počet uživatelů B jako }x\\text{. A používá }x+8\\text{ lidí.}",
+      "x+(x+8)-5=27\\Rightarrow 2x=24",
+      "\\boxed{x=12}\\text{. Pouze B používá }12-5=7\\text{ lidí; na to se ale otázka neptá.}"
+    ],
+    typickaChyba: "Neodečíst průnik při sčítání obou celkových počtů, nebo odpovědět jen počet uživatelů B bez A. Údaj 42 zde není potřeba.",
+    verified: true,
+    verifiedBy: "code",
+    zdroj: "handwritten"
+  },
+  {
+    id: "zakl-58",
+    okruh: "zaklady",
+    tema: "zaklady",
+    podtema: "zakl-procenta",
+    podtemaNazev: "Procenta a trojčlenka",
+    obtiznost: 3,
+    druh: "scio",
+    zadani: "\\text{V mozaice jsou červené, modré a bílé dílky. Červené ku modrým jsou v poměru }3:5\\text{ a modré ku bílým }2:7\\text{. Jaký je poměr červených ku bílým?}",
+    moznosti: [
+      "3:7",
+      "6:35",
+      "15:14",
+      "5:7"
+    ],
+    spravna: 1,
+    postup: [
+      "\\text{Modré sjednotíme na }10\\text{ dílů: }C:M=6:10,\\quad M:B=10:35.",
+      "\\text{Proto }C:B=\\boxed{6:35}."
+    ],
+    typickaChyba: "Spojit krajní čísla 3 a 7 bez sjednocení společné veličiny. V obou poměrech musí modré dílky představovat stejný počet dílů.",
+    verified: true,
+    verifiedBy: "code",
+    zdroj: "handwritten"
+  },
+  {
+    id: "zakl-59",
+    okruh: "zaklady",
+    tema: "zaklady",
+    podtema: "zakl-procenta",
+    podtemaNazev: "Procenta a trojčlenka",
+    obtiznost: 3,
+    druh: "scio",
+    zadani: "\\text{Roční členský příspěvek }2400\\text{ Kč se zvýšil o }8\\%\\text{ a navíc o pevný poplatek }168\\text{ Kč. O kolik procent je výsledná platba vyšší než původní příspěvek?}",
+    moznosti: [
+      "7\\%",
+      "8\\%",
+      "15\\%",
+      "16\\%"
+    ],
+    spravna: 2,
+    postup: [
+      "0{,}08\\cdot2400=192\\text{ Kč; celkové zvýšení je }192+168=360\\text{ Kč.}",
+      "\\frac{360}{2400}\\cdot100=\\boxed{15\\%}."
+    ],
+    typickaChyba: "Počítat pevný poplatek jako procento již zvýšené částky. Celkové zvýšení porovnáváme s původními 2400 Kč.",
+    verified: true,
+    verifiedBy: "code",
+    zdroj: "handwritten"
+  },
+  {
+    id: "zakl-60",
+    okruh: "zaklady",
+    tema: "zaklady",
+    podtema: "zakl-procenta",
+    podtemaNazev: "Procenta a trojčlenka",
+    obtiznost: 2,
+    druh: "scio",
+    zadani: "\\text{Které zaokrouhlení NEDÁ výsledek }800\\text{?}",
+    moznosti: [
+      "796\\text{ na desítky}",
+      "849\\text{ na stovky}",
+      "750\\text{ na stovky}",
+      "744\\text{ na stovky}"
+    ],
+    spravna: 3,
+    postup: [
+      "796\\to800,\\quad849\\to800,\\quad750\\to800,\\quad744\\to700.",
+      "\\boxed{744\\text{ na stovky}}\\text{ tedy jako jediné nedá }800."
+    ],
+    typickaChyba: "Přehlédnout slovo NEDÁ nebo u 744 sledovat jednotky namísto desítek. U zaokrouhlení na stovky rozhoduje číslice desítek.",
+    verified: true,
+    verifiedBy: "code",
+    zdroj: "handwritten"
+  },
+  {
+    id: "zakl-61",
+    okruh: "zaklady",
+    tema: "zaklady",
+    podtema: "zakl-mocniny",
+    podtemaNazev: "Mocniny, odmocniny a zlomky",
+    obtiznost: 2,
+    druh: "scio",
+    zadani: "\\text{Vypočtěte }(\\sqrt{75}-\\sqrt{12})^2\\text{.}",
+    moznosti: [
+      "63",
+      "9",
+      "27",
+      "3\\sqrt{3}"
+    ],
+    spravna: 2,
+    postup: [
+      "\\sqrt{75}=5\\sqrt3,\\quad\\sqrt{12}=2\\sqrt3.",
+      "(5\\sqrt3-2\\sqrt3)^2=(3\\sqrt3)^2=9\\cdot3=\\boxed{27}."
+    ],
+    typickaChyba: "Umocnit pouze jednotlivé členy a odečíst 75 − 12. Druhá mocnina rozdílu má i smíšený člen.",
+    verified: true,
+    verifiedBy: "code",
+    zdroj: "handwritten"
+  },
+  {
+    id: "zakl-62",
+    okruh: "zaklady",
+    tema: "zaklady",
+    podtema: "zakl-mocniny",
+    podtemaNazev: "Mocniny, odmocniny a zlomky",
+    obtiznost: 3,
+    druh: "scio",
+    zadani: "\\text{Které číslo je největší?}",
+    moznosti: [
+      "(-2)^{36}",
+      "\\sqrt{2^{92}}",
+      "\\left(\\frac12\\right)^{-41}",
+      "8^{15}"
+    ],
+    spravna: 1,
+    postup: [
+      "(-2)^{36}=2^{36},\\quad\\sqrt{2^{92}}=2^{46}.",
+      "\\left(\\frac12\\right)^{-41}=2^{41},\\quad8^{15}=2^{45}.",
+      "\\text{Základ }2>1\\text{: největší exponent je }46\\text{, tedy }\\boxed{\\sqrt{2^{92}}}."
+    ],
+    typickaChyba: "Porovnávat původní exponenty bez sjednocení základů nebo chápat záporný exponent jako záporný výsledek.",
+    verified: true,
+    verifiedBy: "code",
+    zdroj: "handwritten"
+  },
+  {
+    id: "zakl-63",
+    okruh: "zaklady",
+    tema: "zaklady",
+    podtema: "zakl-mocniny",
+    podtemaNazev: "Mocniny, odmocniny a zlomky",
+    obtiznost: 3,
+    druh: "scio",
+    zadani: "\\text{Zjednodušte }\\frac{\\left((\\frac13)^2\\right)^3\\cdot\\left((\\frac13)^3\\right)^2}{(\\frac13)^{16}}\\text{.}",
+    moznosti: [
+      "3^{-4}",
+      "3^4",
+      "3^{12}",
+      "3^{28}"
+    ],
+    spravna: 1,
+    postup: [
+      "\\left((\\tfrac13)^2\\right)^3=(\\tfrac13)^6,\\quad\\left((\\tfrac13)^3\\right)^2=(\\tfrac13)^6.",
+      "(\\tfrac13)^{6+6-16}=(\\tfrac13)^{-4}=\\boxed{3^4}."
+    ],
+    typickaChyba: "Při mocnině mocniny exponenty sečíst. V závorkách se násobí, při násobení stejných základů sčítají a při dělení odčítají.",
+    verified: true,
+    verifiedBy: "code",
+    zdroj: "handwritten"
+  },
+  {
+    id: "zakl-64",
+    okruh: "zaklady",
+    tema: "zaklady",
+    podtema: "zakl-mocniny",
+    podtemaNazev: "Mocniny, odmocniny a zlomky",
+    obtiznost: 4,
+    druh: "scio",
+    zadani: "\\text{Určete hodnotu }\\sqrt{7-\\sqrt{13}}\\cdot\\sqrt{7+\\sqrt{13}}\\text{.}",
+    moznosti: [
+      "36",
+      "6",
+      "\\sqrt{13}",
+      "7-\\sqrt{13}"
+    ],
+    spravna: 1,
+    postup: [
+      "\\sqrt{13}<7\\text{, obě čísla pod vnějšími odmocninami jsou kladná.}",
+      "\\sqrt{(7-\\sqrt{13})(7+\\sqrt{13})}=\\sqrt{49-13}=\\sqrt{36}=\\boxed6."
+    ],
+    typickaChyba: "Rozdělit odmocninu rozdílu na rozdíl odmocnin. Násobení odmocnin zde dovolí využít rozdíl čtverců.",
+    verified: true,
+    verifiedBy: "code",
+    zdroj: "handwritten"
+  },
+  {
+    id: "zakl-65",
+    okruh: "zaklady",
+    tema: "zaklady",
+    podtema: "zakl-mocniny",
+    podtemaNazev: "Mocniny, odmocniny a zlomky",
+    obtiznost: 4,
+    druh: "scio",
+    zadani: "\\text{Bez násobení velkých čísel zjednodušte }\\frac{2\\cdot4\\cdot6\\cdots16}{1\\cdot2\\cdot3\\cdots8}\\text{.}",
+    moznosti: [
+      "2^7",
+      "2^8",
+      "2",
+      "16"
+    ],
+    spravna: 1,
+    postup: [
+      "\\text{Spárujeme činitele: }\\frac21\\cdot\\frac42\\cdot\\frac63\\cdots\\frac{16}{8}.",
+      "\\text{Každý z osmi zlomků je }2\\text{. Součin je }\\boxed{2^8}."
+    ],
+    typickaChyba: "Vytknout dvojku jen jednou z celého součinu. Dvojka pochází z každého z osmi činitelů.",
+    verified: true,
+    verifiedBy: "code",
+    zdroj: "handwritten"
+  },
+  {
+    id: "zakl-66",
+    okruh: "zaklady",
+    tema: "zaklady",
+    podtema: "zakl-mocniny",
+    podtemaNazev: "Mocniny, odmocniny a zlomky",
+    obtiznost: 2,
+    druh: "scio",
+    zadani: "\\text{Vypočtěte }\\frac{73^2-9}{70}\\text{.}",
+    moznosti: [
+      "70",
+      "73",
+      "76",
+      "79"
+    ],
+    spravna: 2,
+    postup: [
+      "73^2-9=73^2-3^2=(73-3)(73+3)=70\\cdot76.",
+      "\\frac{70\\cdot76}{70}=\\boxed{76}."
+    ],
+    typickaChyba: "Krátit jmenovatel jen s jedním sčítancem v čitateli. Nejprve převeď rozdíl čtverců na součin.",
+    verified: true,
+    verifiedBy: "code",
+    zdroj: "handwritten"
+  },
+  {
+    id: "zakl-67",
+    okruh: "zaklady",
+    tema: "zaklady",
+    podtema: "zakl-mocniny",
+    podtemaNazev: "Mocniny, odmocniny a zlomky",
+    obtiznost: 4,
+    druh: "scio",
+    zadani: "\\text{Zjednodušte }\\frac{14^3\\cdot21^2}{6^2\\cdot7^5}\\text{.}",
+    moznosti: [
+      "2",
+      "7",
+      "\\frac12",
+      "14"
+    ],
+    spravna: 0,
+    postup: [
+      "14=2\\cdot7,\\quad21=3\\cdot7,\\quad6=2\\cdot3.",
+      "\\frac{2^3\\cdot7^3\\cdot3^2\\cdot7^2}{2^2\\cdot3^2\\cdot7^5}=2^{3-2}=\\boxed2."
+    ],
+    typickaChyba: "Rozdělovat mocninu součinu nesprávně nebo při krácení odečíst i samotné základy. Krátí se stejné prvočíselné mocniny.",
+    verified: true,
+    verifiedBy: "code",
+    zdroj: "handwritten"
+  },
+  {
+    id: "zakl-68",
+    okruh: "zaklady",
+    tema: "zaklady",
+    podtema: "zakl-delitelnost",
+    podtemaNazev: "Dělitelnost, NSD a NSN",
+    obtiznost: 3,
+    druh: "scio",
+    zadani: "\\text{Která číslice }P\\text{ způsobí, že číslo }52P4\\text{ bude dělitelné }12\\text{?}",
+    moznosti: [
+      "1",
+      "4",
+      "6",
+      "7"
+    ],
+    spravna: 1,
+    postup: [
+      "\\text{Dělitelnost }4\\text{: dvojčíslí }P4\\text{ vyhoví pro sudé }P.",
+      "\\text{Dělitelnost }3\\text{: }5+2+P+4=11+P\\text{, tedy }P\\in\\{1;4;7\\}.",
+      "\\text{Společně vyhoví jen }P=4\\text{, protože }5244=12\\cdot437."
+    ],
+    typickaChyba: "Ověřit jen ciferný součet. Dělitelnost 12 vyžaduje současně dělitelnost třemi a čtyřmi.",
+    verified: true,
+    verifiedBy: "code",
+    zdroj: "handwritten"
+  },
+  {
+    id: "zakl-69",
+    okruh: "zaklady",
+    tema: "zaklady",
+    podtema: "zakl-delitelnost",
+    podtemaNazev: "Dělitelnost, NSD a NSN",
+    obtiznost: 3,
+    druh: "scio",
+    zadani: "\\text{Čísla }143\\text{ a }263\\text{ dávají při dělení přirozeným číslem }d\\text{ shodně zbytek }23\\text{. Které }d\\text{ vyhovuje?}",
+    moznosti: [
+      "20",
+      "24",
+      "25",
+      "48"
+    ],
+    spravna: 1,
+    postup: [
+      "d\\text{ musí dělit }143-23=120\\text{ a }263-23=240\\text{; také }d>23.",
+      "20\\text{ je příliš malé; }25\\text{ nedělí }120\\text{; }48\\text{ nedělí }120.",
+      "143=24\\cdot5+23,\\quad263=24\\cdot10+23\\Rightarrow\\boxed{24}."
+    ],
+    typickaChyba: "Vybrat společného dělitele 20 a zapomenout, že zbytek 23 nesmí být větší než dělitel.",
+    verified: true,
+    verifiedBy: "code",
+    zdroj: "handwritten"
+  },
+  {
+    id: "zakl-70",
+    okruh: "zaklady",
+    tema: "zaklady",
+    podtema: "zakl-delitelnost",
+    podtemaNazev: "Dělitelnost, NSD a NSN",
+    obtiznost: 3,
+    druh: "scio",
+    zadani: "\\text{Kterým číslem NENÍ dělitelný výraz }1003^2-1003\\text{?}",
+    moznosti: [
+      "2",
+      "3",
+      "6",
+      "4"
+    ],
+    spravna: 3,
+    postup: [
+      "1003^2-1003=1003\\cdot1002.",
+      "1002=6\\cdot167\\text{, takže součin je dělitelný }2,3,6.",
+      "1003\\equiv3\\pmod4,\\quad1002\\equiv2\\pmod4\\Rightarrow1003\\cdot1002\\equiv2\\pmod4.",
+      "\\boxed4\\text{ součin nedělí.}"
+    ],
+    typickaChyba: "Počítat velkou druhou mocninu místo vytknutí. Součin má jediný faktor 2, proto není dělitelný čtyřmi.",
+    verified: true,
+    verifiedBy: "code",
+    zdroj: "handwritten"
+  },
+  {
+    id: "zakl-71",
+    okruh: "zaklady",
+    tema: "zaklady",
+    podtema: "zakl-delitelnost",
+    podtemaNazev: "Dělitelnost, NSD a NSN",
+    obtiznost: 3,
+    druh: "scio",
+    zadani: "\\text{Přirozené číslo }k\\text{ dává po dělení }9\\text{ zbytek }5\\text{. Jaký zbytek dává }4k+7\\text{ po dělení }9\\text{?}",
+    moznosti: [
+      "0",
+      "2",
+      "5",
+      "7"
+    ],
+    spravna: 0,
+    postup: [
+      "k=9q+5\\text{ pro celé }q\\ge0.",
+      "4k+7=36q+27=9(4q+3)\\text{. Zbytek je }\\boxed0."
+    ],
+    typickaChyba: "Nechat jako zbytek 27. Zbytek musí být menší než 9; 27 je další celý násobek devítky.",
+    verified: true,
+    verifiedBy: "code",
+    zdroj: "handwritten"
+  },
+  {
+    id: "zakl-72",
+    okruh: "zaklady",
+    tema: "zaklady",
+    podtema: "zakl-logika",
+    podtemaNazev: "Výroková logika",
+    obtiznost: 3,
+    druh: "scio",
+    zadani: "\\text{Která formulace je logicky ekvivalentní pravidlu „Jestliže je zásilka expresní, má sledovací kód“?}",
+    moznosti: [
+      "\\text{Jestliže má zásilka kód, je expresní.}",
+      "\\text{Jestliže zásilka není expresní, nemá kód.}",
+      "\\text{Jestliže zásilka nemá kód, není expresní.}",
+      "\\text{Zásilka je expresní právě tehdy, když má kód.}"
+    ],
+    spravna: 2,
+    postup: [
+      "\\text{Označme }p:\\text{ expresní},\\ q:\\text{ má kód. Původní pravidlo je }p\\Rightarrow q.",
+      "\\text{Obměna }\\neg q\\Rightarrow\\neg p\\text{ je ekvivalentní: bez kódu nemůže být expresní.}",
+      "\\text{Pravidlo dovoluje i neexpresní zásilku s kódem; ostatní možnosti ji vylučují.}"
+    ],
+    typickaChyba: "Zaměnit obměnu za obrácení implikace. Obměna současně prohodí pořadí a zneguje obě části.",
+    verified: true,
+    verifiedBy: "code",
+    zdroj: "handwritten"
+  },
+  {
+    id: "zakl-73",
+    okruh: "zaklady",
+    tema: "zaklady",
+    podtema: "zakl-logika",
+    podtemaNazev: "Výroková logika",
+    obtiznost: 2,
+    druh: "scio",
+    zadani: "\\text{Seznam obsahuje přesně }9\\text{ položek. Posuďte výrok V: „Seznam má alespoň 11 položek“ a vyberte jeho správnou negaci.}",
+    moznosti: [
+      "\\text{V je nepravdivý; negace: nejvýše 10 položek.}",
+      "\\text{V je nepravdivý; negace: právě 10 položek.}",
+      "\\text{V je pravdivý; negace: nejvýše 10 položek.}",
+      "\\text{V je nepravdivý; negace: alespoň 12 položek.}"
+    ],
+    spravna: 0,
+    postup: [
+      "9<11\\text{, proto je V nepravdivý.}",
+      "\\neg(n\\ge11)\\equiv n<11\\text{, pro celočíselný počet tedy }n\\le10.",
+      "\\text{Správně: V je nepravdivý, negace říká nejvýše 10 položek.}"
+    ],
+    typickaChyba: "Zaměnit negaci za jeden konkrétní možný počet. „Právě 10“ nepokrývá ostatní počty menší než 11.",
+    verified: true,
+    verifiedBy: "code",
+    zdroj: "handwritten"
+  },
+  {
+    id: "zakl-74",
+    okruh: "zaklady",
+    tema: "zaklady",
+    podtema: "zakl-logika",
+    podtemaNazev: "Výroková logika",
+    obtiznost: 3,
+    druh: "scio",
+    zadani: "\\text{Pro které pravdivostní hodnoty je výrok }\\neg(A\\lor\\neg B)\\text{ pravdivý?}",
+    moznosti: [
+      "A=1,\\ B=1",
+      "A=1,\\ B=0",
+      "A=0,\\ B=0",
+      "A=0,\\ B=1"
+    ],
+    spravna: 3,
+    postup: [
+      "\\neg(A\\lor\\neg B)\\equiv\\neg A\\land B.",
+      "\\text{Konjunkce je pravdivá, jen když }\\neg A=1\\text{ a }B=1.",
+      "\\boxed{A=0,\\ B=1}."
+    ],
+    typickaChyba: "Negovat obě části, ale ponechat spojku „nebo“. Při negaci disjunkce se mění na konjunkci.",
+    verified: true,
+    verifiedBy: "code",
+    zdroj: "handwritten"
+  },
+  {
+    id: "zakl-75",
+    okruh: "zaklady",
+    tema: "zaklady",
+    podtema: "zakl-mocniny",
+    podtemaNazev: "Mocniny, odmocniny a zlomky",
+    obtiznost: 3,
+    druh: "scio",
+    zadani: "\\text{Který výraz je roven }\\frac{2}{\\sqrt5-1}\\text{?}",
+    moznosti: [
+      "\\frac{\\sqrt5-1}{2}",
+      "\\frac{\\sqrt5+1}{2}",
+      "2\\sqrt5+2",
+      "\\frac12"
+    ],
+    spravna: 1,
+    postup: [
+      "\\frac{2}{\\sqrt5-1}\\cdot\\frac{\\sqrt5+1}{\\sqrt5+1}=\\frac{2(\\sqrt5+1)}{5-1}.",
+      "\\frac{2(\\sqrt5+1)}4=\\boxed{\\frac{\\sqrt5+1}2}."
+    ],
+    typickaChyba: "Rozšířit jen jmenovatel, nebo použít znovu rozdíl místo součtu. Sdružený výraz odstraní odmocninu díky rozdílu čtverců.",
+    verified: true,
+    verifiedBy: "code",
+    zdroj: "handwritten"
+  },
+  {
+    id: "zakl-76",
+    okruh: "zaklady",
+    tema: "zaklady",
+    podtema: "zakl-mocniny",
+    podtemaNazev: "Mocniny, odmocniny a zlomky",
+    obtiznost: 2,
+    druh: "scio",
+    zadani: "\\text{Vypočtěte }\\left(\\frac56-\\frac14\\right):\\frac7{12}\\text{.}",
+    moznosti: [
+      "1",
+      "\\frac{49}{144}",
+      "\\frac34",
+      "\\frac7{12}"
+    ],
+    spravna: 0,
+    postup: [
+      "\\frac56-\\frac14=\\frac{10-3}{12}=\\frac7{12}.",
+      "\\frac7{12}:\\frac7{12}=\\frac7{12}\\cdot\\frac{12}7=\\boxed1."
+    ],
+    typickaChyba: "Při dělení násobit druhým zlomkem bez převrácení. Nejdříve také dokonči odčítání v závorce.",
+    verified: true,
+    verifiedBy: "code",
+    zdroj: "handwritten"
+  },
+  {
+    id: "zakl-d19",
+    okruh: "zaklady",
+    tema: "zaklady",
+    podtema: "zakl-mocniny",
+    podtemaNazev: "Mocniny, odmocniny a zlomky",
+    obtiznost: 1,
+    druh: "dril",
+    zadani: "\\text{V reálných číslech vypočtěte }\\sqrt{(-8)^2}+\\sqrt[3]{-27}\\text{.}",
+    moznosti: [
+      "-11",
+      "11",
+      "5",
+      "-5"
+    ],
+    spravna: 2,
+    postup: [
+      "\\sqrt{(-8)^2}=|-8|=8,\\quad\\sqrt[3]{-27}=-3.",
+      "8-3=\\boxed5."
+    ],
+    typickaChyba: "Zaměnit odmocninu druhé mocniny za původní záporné číslo. Sudá odmocnina je nezáporná, lichá může být záporná.",
+    verified: true,
+    verifiedBy: "code",
+    zdroj: "handwritten"
+  },
+  {
+    id: "zakl-d20",
+    okruh: "zaklady",
+    tema: "zaklady",
+    podtema: "zakl-procenta",
+    podtemaNazev: "Procenta a trojčlenka",
+    obtiznost: 1,
+    druh: "dril",
+    zadani: "\\text{Zaokrouhlete }3{,}746\\text{ přímo na desetiny.}",
+    moznosti: [
+      "3{,}7",
+      "3{,}8",
+      "3{,}75",
+      "4"
+    ],
+    spravna: 0,
+    postup: [
+      "\\text{Na místě desetin je }7\\text{, rozhoduje následující číslice }4.",
+      "\\text{Desetiny nezvyšujeme, výsledek je }\\boxed{3{,}7}."
+    ],
+    typickaChyba: "Zaokrouhlovat nejprve na setiny (3,75) a až potom na desetiny (3,8). Tento mezikrok může změnit správný výsledek.",
+    verified: true,
+    verifiedBy: "code",
+    zdroj: "handwritten"
   },
 ];
