@@ -84,12 +84,12 @@ export function OkruhSelect({
         jedna správná. Neoficiální projekt, není spojeno se SCIO.
         Zdrojový kód:{" "}
         <a
-          href="https://github.com/LukasPodhorny/scio_matika"
+          href="https://github.com/LukasPodhorny/scio-matematika-aplikace"
           target="_blank"
           rel="noreferrer"
           className="underline hover:text-neutral-700 dark:hover:text-neutral-300"
         >
-          github.com/LukasPodhorny/scio_matika
+          github.com/LukasPodhorny/scio-matematika-aplikace
         </a>
         , příspěvky vítány.
       </p>
