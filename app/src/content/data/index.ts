@@ -1,3 +1,4 @@
+import { ORIGINALNI_2026 } from "./originalni2026";
 import type { DruhUlohy, OkruhId, Task } from "../types";
 import { ANALYTICKA } from "./analyticka";
 import { FUNKCE } from "./funkce";
@@ -12,6 +13,7 @@ import { ZAKLADY } from "./zaklady";
 
 /** Všechna statická data úloh. Nový okruh = přidat soubor a řádek sem. */
 const VSECHNA_DATA: Task[] = [
+  ...ORIGINALNI_2026,
   ...ANALYTICKA,
   ...FUNKCE,
   ...GONIOMETRIE,
