@@ -51,12 +51,6 @@ export function sestavTest(ulohy: Task[], pocet: number, seed: number): Task[] {
   return vysledek;
 }
 
-/** Jedna náhodná úloha z každého dostupného okruhu, v náhodném pořadí. */
-export function sestavMixOkruhu(ulohy: Task[], seed: number): Task[] {
-  const pocetOkruhu = new Set(ulohy.map((u) => u.okruh)).size;
-  return sestavTest(ulohy, pocetOkruhu, seed);
-}
-
 export interface OdpovedTestu {
   taskId: string;
   /** Zvolená možnost, null = nezodpovězeno. */

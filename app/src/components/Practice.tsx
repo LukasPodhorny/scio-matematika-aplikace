@@ -5,7 +5,6 @@ import type { ChybaKategorie, OkruhId } from "../content/types";
 import { CHYBA_NAZEV } from "../content/types";
 import { checkChoice } from "../lib/check";
 import { Rng } from "../lib/rng";
-import { sestavMixOkruhu } from "../lib/simulace";
 import { useMaxRadku } from "../lib/useMaxRadku";
 import { addAttempt, addReport, loadData, uid } from "../lib/store";
 import { Tex } from "./Tex";
@@ -46,17 +45,14 @@ export function Practice({ okruh, aktivni = true, onBack, onTeorie }: Props) {
   const [uplynulo, setUplynulo] = useState(0);
   const [relace, setRelace] = useState({ celkem: 0, spravne: 0 });
   const [nahlaseno, setNahlaseno] = useState(false);
-  const [dokonceno, setDokonceno] = useState(false);
   const mix = okruh === "mix";
 
   const ulohy = useMemo(() => okruh === "mix" ? vsechnyUlohy() : ulohyProOkruh(okruh), [okruh]);
   const smes = useMemo(
-    () => mix
-      ? sestavMixOkruhu(ulohy, seed + kolo)
-      : zamichaneIndexy(ulohy.length, seed + kolo).map((i) => ulohy[i]),
-    [ulohy, kolo, seed, mix],
+    () => zamichaneIndexy(ulohy.length, seed + kolo).map((i) => ulohy[i]),
+    [ulohy, kolo, seed],
   );
-  const uloha = !dokonceno && smes.length > 0 ? smes[index % smes.length] : null;
+  const uloha = smes.length > 0 ? smes[index % smes.length] : null;
   const zadaniRef = useMaxRadku<HTMLDivElement>(4, 14, uloha?.id);
   const startRef = useRef<number>(0);
 
@@ -119,12 +115,8 @@ export function Practice({ okruh, aktivni = true, onBack, onTeorie }: Props) {
 
   const dalsi = useCallback(() => {
     if (index + 1 >= smes.length) {
-      if (mix) {
-        setDokonceno(true);
-      } else {
-        setKolo((k) => k + 1);
-        setIndex(0);
-      }
+      setKolo((k) => k + 1);
+      setIndex(0);
     } else {
       setIndex((i) => i + 1);
     }
@@ -167,7 +159,7 @@ export function Practice({ okruh, aktivni = true, onBack, onTeorie }: Props) {
 
   // Klávesnice: A–D/1–4 výběr, Enter potvrdit/další, 1–3 kategorie chyby, Esc zpět.
   useEffect(() => {
-    if (!aktivni || dokonceno) return;
+    if (!aktivni) return;
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
         onBack();
@@ -197,38 +189,9 @@ export function Practice({ okruh, aktivni = true, onBack, onTeorie }: Props) {
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [faze, potvrdit, ulozitKategorii, dalsi, onBack, aktivni, dokonceno]);
+  }, [faze, potvrdit, ulozitKategorii, dalsi, onBack, aktivni]);
 
   const zodpovezeno = faze !== "odpoved";
-
-  if (dokonceno) {
-    return (
-      <div className="mx-auto w-full max-w-2xl px-4 py-6 md:py-10">
-        <button type="button" onClick={onBack} className="rounded px-2 py-1 text-sm text-neutral-600 hover:bg-neutral-100 dark:text-neutral-400 dark:hover:bg-neutral-800">
-          ← Témata
-        </button>
-        <h1 className="mt-6 text-2xl font-bold tracking-tight">Sada dokončena</h1>
-        <p className="mt-2 text-neutral-600 dark:text-neutral-400">
-          Prošel jsi všechny okruhy. Správně máš {relace.spravne} z {relace.celkem} úloh.
-          Výsledky jsou uložené ve statistikách.
-        </p>
-        <button
-          type="button"
-          autoFocus
-          onClick={() => {
-            setKolo((k) => k + 1);
-            setIndex(0);
-            setRelace({ celkem: 0, spravne: 0 });
-            setDokonceno(false);
-            setUplynulo(0);
-          }}
-          className="mt-6 rounded-lg bg-sky-700 px-6 py-3 font-semibold text-white hover:bg-sky-800 focus-visible:outline-2 focus-visible:outline-sky-600 dark:bg-sky-600 dark:hover:bg-sky-500"
-        >
-          Nová náhodná sada
-        </button>
-      </div>
-    );
-  }
 
   if (uloha === null) {
     return (
@@ -253,9 +216,8 @@ export function Practice({ okruh, aktivni = true, onBack, onTeorie }: Props) {
         <div className="mb-6">
           <h1 className="text-2xl font-bold tracking-tight">Mix všech okruhů</h1>
           <p className="mt-2 text-sm text-neutral-600 dark:text-neutral-400">
-            Úloha {index + 1} z {smes.length} · {OKRUHY.find((o) => o.id === uloha.okruh)?.nazev}
+            Úloha {relace.celkem + (faze === "odpoved" ? 1 : 0)} · {OKRUHY.find((o) => o.id === uloha.okruh)?.nazev}
           </p>
-          <progress className="mt-3 h-1.5 w-full accent-sky-600" value={index} max={smes.length} aria-label="Dokončené úlohy v sadě" />
         </div>
       )}
       {/* Horní lišta */}
@@ -424,7 +386,7 @@ export function Practice({ okruh, aktivni = true, onBack, onTeorie }: Props) {
             autoFocus
             className="mt-5 w-full rounded-lg bg-sky-700 px-6 py-3 font-semibold text-white transition-colors hover:bg-sky-800 focus-visible:outline-2 focus-visible:outline-sky-600 dark:bg-sky-600 dark:hover:bg-sky-500"
           >
-            {mix && index + 1 === smes.length ? "Dokončit sadu ↵" : "Další úloha ↵"}
+            Další úloha ↵
           </button>
 
           <div className="mt-3 text-center">

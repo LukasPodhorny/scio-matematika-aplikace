@@ -61,7 +61,7 @@ try {
   assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth));
 
   await page.getByRole('button', { name: /Mix všech okruhů/ }).click();
-  await page.getByText(/Úloha 1 z 9/).waitFor();
+  await page.getByText(/Úloha 1 ·/).waitFor();
   const firstQuestion = await page.locator('.task-statement').textContent();
   await page.getByRole('radio').nth(0).click();
   await page.getByRole('button', { name: 'Zopakovat teorii', exact: true }).click();
@@ -73,44 +73,13 @@ try {
   assert.equal(await page.getByRole('radio').nth(0).getAttribute('aria-checked'), 'true');
   await page.screenshot({ path: '/tmp/scio-mix-mobile.png', fullPage: true });
 
-  // Osm odpovědí a přeskočení poslední úlohy: devět pokusů, devět různých okruhů.
-  for (let i = 1; i <= 9; i++) {
-    await page.getByText(new RegExp(`Úloha ${i} z 9`)).waitFor();
-    if (i === 9) {
-      await page.getByRole('button', { name: 'Přeskočit', exact: true }).click();
-    } else {
-      await page.getByRole('radio').nth(0).click();
-      await page.keyboard.press('Enter');
-      if (await page.getByText('Proč to nevyšlo?', { exact: true }).isVisible()) {
-        await page.getByRole('button', { name: /Neznalost látky/ }).click();
-      }
-      await page.getByRole('heading', { name: 'Postup řešení', exact: true }).waitFor();
-      await page.keyboard.press('Enter');
-    }
-  }
-  await page.getByRole('heading', { name: 'Sada dokončena', exact: true }).waitFor();
-  const attempts = await page.evaluate(() => JSON.parse(localStorage.getItem('scio-matika-v1')).attempts);
-  assert.equal(attempts.length, 9);
-  assert.equal(new Set(attempts.map((attempt) => attempt.okruh)).size, 9);
-  assert.equal(attempts.filter((attempt) => attempt.vynechano).length, 1);
-  assert.ok(attempts.every((attempt) => !attempt.simulace));
-  await page.getByRole('button', { name: 'Nová náhodná sada', exact: true }).click();
-  await page.getByText(/Úloha 1 z 9/).waitFor();
-  assert.equal(await page.getByRole('radio', { checked: true }).count(), 0);
-
-  // Poslední zodpovězená úloha rovněž ukončí sadu; začátek další neresetuje statistiky.
-  for (let i = 1; i <= 8; i++) {
+  // Mix pokračuje i po deváté úloze, bez závěrečné obrazovky.
+  for (let i = 1; i <= 18; i++) {
+    await page.getByText(new RegExp(`Úloha ${i} ·`)).waitFor();
     await page.getByRole('button', { name: 'Přeskočit', exact: true }).click();
   }
-  await page.getByText(/Úloha 9 z 9/).waitFor();
-  await page.getByRole('radio').nth(0).click();
-  await page.getByRole('button', { name: 'Potvrdit ↵', exact: true }).click();
-  if (await page.getByText('Proč to nevyšlo?', { exact: true }).isVisible()) {
-    await page.getByRole('button', { name: /Neznalost látky/ }).click();
-  }
-  await page.getByRole('button', { name: 'Dokončit sadu ↵', exact: true }).click();
-  await page.getByRole('heading', { name: 'Sada dokončena', exact: true }).waitFor();
-
+  await page.getByText(/Úloha 19 ·/).waitFor();
+  assert.equal(await page.getByRole('heading', { name: 'Sada dokončena' }).count(), 0);
   await context.setOffline(true);
   await page.reload();
   await page.getByRole('heading', { name: 'Procvičování', exact: true }).waitFor();
@@ -123,12 +92,14 @@ try {
   assert.equal(await page.locator('.katex-error').count(), 0);
   await page.getByRole('button', { name: '← Zpět', exact: true }).click();
   await page.getByRole('button', { name: '← Zpět', exact: true }).click();
+  assert.equal(await page.locator('meta[name="theme-color"]').getAttribute('content'), '#ffffff');
   await page.getByRole('button', { name: 'Tmavý', exact: true }).click();
+  assert.equal(await page.locator('meta[name="theme-color"]').getAttribute('content'), '#0a0a0a');
   await page.screenshot({ path: '/tmp/scio-pwa-dark.png', fullPage: true, animations: 'disabled' });
   await page.setViewportSize({ width: 320, height: 740 });
   assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth));
   assert.deepEqual(errors, []);
-  console.log('PASS: 9 okruhů, obě cesty dokončení sady, návrat z teorie, statistiky, instalovatelnost, ikony, mobilní rozložení a reload + teorie offline.');
+  console.log('PASS: nepřetržitý mix, barvy systémových lišt, návrat z teorie, statistiky, instalovatelnost, ikony, mobilní rozložení a reload + teorie offline.');
 } finally {
   await context?.close();
   await new Promise((resolve) => server.httpServer.close(resolve));

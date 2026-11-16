@@ -29,7 +29,7 @@ Na iPhonu lze použít Safari → Sdílet → Přidat na plochu.
 Nová verze nabídne aktualizaci na úvodní stránce a nepřerušuje běžící cvičení.
 Na veřejné doméně je potřeba HTTPS (Vercel jej poskytuje automaticky).
 
-Po sestavení lze instalovatelnost, offline načtení a celý mix devíti okruhů
+Po sestavení lze instalovatelnost, offline načtení a nepřetržitý mix všech okruhů
 ověřit v dočasném profilu Google Chrome:
 
 ```sh

@@ -54,6 +54,10 @@ export default function App() {
 
   useEffect(() => {
     document.documentElement.style.colorScheme = dark ? "dark" : "light";
+    const background = dark ? "#0a0a0a" : "#ffffff";
+    document.querySelector('meta[name="theme-color"]')?.setAttribute("content", background);
+    document.documentElement.style.backgroundColor = background;
+    document.body.style.backgroundColor = background;
   }, [dark]);
 
   const obnovPocty = () => {

@@ -65,8 +65,7 @@ export function OkruhSelect({
       <div className="mt-4 flex flex-col gap-3">
         <Karta
           nadpis="Mix všech okruhů"
-          vpravo={`${OKRUHY.length} úloh`}
-          popis="Jedna náhodná úloha z každého okruhu. Bez limitu, s řešením po každé odpovědi."
+          popis="Náhodné úlohy ze všech okruhů. Bez omezení počtu, s řešením po každé odpovědi."
           onClick={onMix}
         />
         <Karta
