@@ -4,6 +4,7 @@ import { ANALYTICKA } from "./analyticka";
 import { FUNKCE } from "./funkce";
 import { GONIOMETRIE } from "./goniometrie";
 import { KOMBINATORIKA } from "./kombinatorika";
+import { NAROCNE } from "./narocne";
 import { PLANIMETRIE } from "./planimetrie";
 import { POSLOUPNOSTI } from "./posloupnosti";
 import { ROVNICE } from "./rovnice";
@@ -18,6 +19,7 @@ const VSECHNA_DATA: Task[] = [
   ...FUNKCE,
   ...GONIOMETRIE,
   ...KOMBINATORIKA,
+  ...NAROCNE,
   ...PLANIMETRIE,
   ...POSLOUPNOSTI,
   ...ROVNICE,

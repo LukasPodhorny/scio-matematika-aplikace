@@ -1,9 +1,12 @@
 import { describe, expect, it } from "vitest";
 import type { Task } from "../content/types";
+import { vsechnyUlohy } from "../content/data";
+import { OKRUHY } from "../content/okruhy";
 import {
   formatBody,
   formatZbyva,
   sestavTest,
+  sestavMixOkruhu,
   spocitejBody,
   tvarBodu,
   vyhodnotTest,
@@ -56,6 +59,25 @@ describe("sestavTest", () => {
     expect(sestavTest(ulohy, 4, 7).map((u) => u.id)).toEqual(
       jednou.map((u) => u.id),
     );
+  });
+});
+
+describe("sestavMixOkruhu", () => {
+  it("každá sada obsahuje právě jednu úlohu ze všech devíti okruhů", () => {
+    const data = vsechnyUlohy();
+    for (let seed = 0; seed < 20; seed++) {
+      const sada = sestavMixOkruhu(data, seed);
+      expect(sada).toHaveLength(OKRUHY.length);
+      expect(sada.map((u) => u.okruh).sort()).toEqual(OKRUHY.map((o) => o.id).sort());
+      expect(sada.every((u) => data.includes(u))).toBe(true);
+    }
+  });
+
+  it("nový seed mění výběr a prázdné okruhy nevytvářejí neplatné úlohy", () => {
+    const data = vsechnyUlohy();
+    expect(sestavMixOkruhu(data, 1)).not.toEqual(sestavMixOkruhu(data, 2));
+    expect(sestavMixOkruhu([], 1)).toEqual([]);
+    expect(sestavMixOkruhu([uloha()], 1)).toEqual([uloha()]);
   });
 });
 

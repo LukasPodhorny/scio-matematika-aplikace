@@ -6,6 +6,7 @@ import { OkruhDetail } from "./components/OkruhDetail";
 import { OkruhSelect } from "./components/OkruhSelect";
 import { Opakovani } from "./components/Opakovani";
 import { Practice } from "./components/Practice";
+import { PwaUpdate } from "./components/PwaUpdate";
 import { Simulace } from "./components/Simulace";
 import { Statistiky } from "./components/Statistiky";
 import { Teorie } from "./components/Teorie";
@@ -18,6 +19,7 @@ type View =
   | { name: "procvicovani"; okruh: OkruhId }
   | { name: "opakovani" }
   | { name: "simulace" }
+  | { name: "mix" }
   | { name: "statistiky" }
   | { name: "teorie"; id: string; navrat: Exclude<View, { name: "teorie" }> };
 
@@ -78,15 +80,23 @@ export default function App() {
   const titulek =
     view.name === "procvicovani" || view.name === "okruh"
       ? OKRUHY.find((o) => o.id === view.okruh)?.nazev
-      : view.name === "opakovani"
-        ? "Opakování chyb"
-        : view.name === "simulace"
-          ? "Časovaná simulace"
-          : view.name === "statistiky"
-            ? "Statistiky"
-            : view.name === "teorie"
-              ? teoriePodleId(view.id)?.nazev
-              : null;
+      : view.name === "mix"
+        ? "Mix všech okruhů"
+        : view.name === "opakovani"
+          ? "Opakování chyb"
+          : view.name === "simulace"
+            ? "Časovaná simulace"
+            : view.name === "statistiky"
+              ? "Statistiky"
+              : view.name === "teorie"
+                ? teoriePodleId(view.id)?.nazev
+                : null;
+
+  // Při otevření teorie zachovat rozehranou úlohu i výběr celé sady.
+  const practiceView = view.name === "teorie" ? view.navrat : view;
+  const practiceOkruh = practiceView.name === "mix"
+    ? "mix"
+    : practiceView.name === "procvicovani" ? practiceView.okruh : null;
 
   return (
     <div className="min-h-screen bg-white text-neutral-900 dark:bg-neutral-950 dark:text-neutral-100">
@@ -95,10 +105,10 @@ export default function App() {
           <button
             type="button"
             onClick={zpetNaTemata}
-            className="rounded text-left focus-visible:outline-2 focus-visible:outline-sky-600"
+            className="flex min-w-0 items-center gap-2 rounded text-left focus-visible:outline-2 focus-visible:outline-sky-600"
             title="Zpět na výběr témat"
           >
-            <span className="font-bold tracking-tight">Příprava SCIO Matematika</span>
+            <span className="font-bold tracking-tight">SCIO Matematika</span>
             {titulek && (
               <span className="ml-2 hidden text-sm font-normal text-neutral-500 min-[500px]:inline dark:text-neutral-400">
                 {titulek}
@@ -119,6 +129,17 @@ export default function App() {
       </header>
 
       <main>
+        {practiceOkruh && (
+          <div hidden={view.name === "teorie"}>
+            <Practice
+              key={practiceOkruh}
+              okruh={practiceOkruh}
+              aktivni={view.name !== "teorie"}
+              onBack={practiceOkruh === "mix" ? zpetNaTemata : () => setView({ name: "okruh", okruh: practiceOkruh })}
+              onTeorie={otevriTeorii}
+            />
+          </div>
+        )}
         {view.name === "temata" ? (
           <OkruhSelect
             pocetPokusu={pocetPokusu}
@@ -126,6 +147,10 @@ export default function App() {
             onSelect={(okruh) => setView({ name: "okruh", okruh })}
             onOpakovani={() => setView({ name: "opakovani" })}
             onSimulace={() => setView({ name: "simulace" })}
+            onMix={() => {
+              setView({ name: "mix" });
+              window.scrollTo(0, 0);
+            }}
             onStatistiky={() => setView({ name: "statistiky" })}
           />
         ) : view.name === "okruh" ? (
@@ -137,14 +162,7 @@ export default function App() {
             onTeorie={otevriTeorii}
             onBack={zpetNaTemata}
           />
-        ) : view.name === "procvicovani" ? (
-          <Practice
-            key={view.okruh}
-            okruh={view.okruh}
-            onBack={() => setView({ name: "okruh", okruh: view.okruh })}
-            onTeorie={otevriTeorii}
-          />
-        ) : view.name === "opakovani" ? (
+        ) : view.name === "procvicovani" || view.name === "mix" ? null : view.name === "opakovani" ? (
           <Opakovani onBack={zpetNaTemata} onTeorie={otevriTeorii} />
         ) : view.name === "simulace" ? (
           <Simulace onBack={zpetNaTemata} />
@@ -158,6 +176,7 @@ export default function App() {
             return <Teorie teorie={t} onBack={() => setView(navrat)} />;
           })()
         )}
+        <PwaUpdate visible={view.name === "temata"} />
       </main>
     </div>
   );

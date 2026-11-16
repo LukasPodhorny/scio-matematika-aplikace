@@ -10,6 +10,7 @@ interface Props {
   onSelect: (okruh: OkruhId) => void;
   onOpakovani: () => void;
   onSimulace: () => void;
+  onMix: () => void;
   onStatistiky: () => void;
 }
 
@@ -19,6 +20,7 @@ export function OkruhSelect({
   onSelect,
   onOpakovani,
   onSimulace,
+  onMix,
   onStatistiky,
 }: Props) {
   return (
@@ -61,6 +63,12 @@ export function OkruhSelect({
         Další režimy
       </h2>
       <div className="mt-4 flex flex-col gap-3">
+        <Karta
+          nadpis="Mix všech okruhů"
+          vpravo={`${OKRUHY.length} úloh`}
+          popis="Jedna náhodná úloha z každého okruhu. Bez limitu, s řešením po každé odpovědi."
+          onClick={onMix}
+        />
         <Karta
           nadpis="Opakování chyb"
           vpravo={pocetChyb > 0 ? `čeká ${pocetChyb}` : "hotovo"}
